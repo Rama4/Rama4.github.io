@@ -1,0 +1,70 @@
+@font-face {
+   font-family: foo;  /*use any name you want*/
+   src: url('../AvenirLTStd-Book.otf');
+}
+
+body{
+    background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF);
+    background: linear-gradient(to left, #2C3E50, #4CA1AF);
+    
+    color: #e0e0e0;
+    margin:0;
+    font-family: foo,sans-serif;
+}
+h1{
+	
+    text-align: center;
+    /*background: steelblue;*/
+    margin: 0;
+    text-transform: uppercase;
+    /*line-height: 1.1;*/
+    padding: 20px 0;
+    
+}
+
+/*login form (put icon inside input field)*/
+/* enable absolute positioning */
+.inner-addon {
+ position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+position: absolute;
+padding: 10px;
+pointer-events: none;
+color:#232323;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+#tagline{
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.8em;
+  text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px rgba(0, 0, 0, 0.1), 0 18px 23px rgba(0, 0, 0, 0.1);
+  color:white;
+  
+}
+#landing-header {
+	margin-top:10%;
+  text-align: center;
+  text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px rgba(0, 0, 0, 0.1), 0 18px 23px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  font-size: 4em;
+  color: white;
+}
+#login-button,#view-scores{
+	color: #e0e0e0;
+	background:none;
+}
+#login-button:hover,#view-scores:hover{
+	color: steelblue;
+	background:#e0e0e0;
+}

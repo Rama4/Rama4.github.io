@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <!-- title and meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Memory Game</title>
+  <!-- css -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="../styles/common.css">
+  <link rel="stylesheet" href="../styles/memory.css">
+</head>
+<body>
+  <h2 class="section-title">Moves : <span id="moves">0</span></h2>
+  <span id="score">0</span>
+  <a href="scores.html" id="quit" class="btn btn-lg">Quit</a>
+  <div class="wrapper">
+      <div class="container">
+        <div class="section">
+          <div class="section-content">
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+            <div class="card effect-click">
+              <div class="card-front">
+                <span class="card-text"></span>
+              </div>
+              <div class="card-back">
+                <span class="card-text"></span>
+              </div>
+            </div><!-- /card -->
+        </div><!-- /section -->
+    </div><!--container-->
+  </div><!-- /#wrapper -->
+  <button class="btn btn-lg" id="msg" >Congrats! You have finished the game!</button>
+  <h2 style="text-align:center; color:#e0e0e0; font-size:20px!important;">Click on a card to reveal its number. Arrange the numbers in ascending order (1-16)</h2>
+  
+  
+  <script type="text/javascript">
+  
+  (function() {
+    var cards = document.querySelectorAll(".card.effect-click");
+    for ( var i  = 0, len = cards.length; i < len; i++ ) {
+      var card = cards[i];
+      clickListener( card );
+    }
+  
+    function clickListener(card) {
+      card.addEventListener( "click", function() {
+        var c = this.classList;
+        c.contains("flipped") === true ? c.remove("flipped") : c.add("flipped");
+      });
+    }
+  })();
+  </script>
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+     
+     
+  <script src="../scripts/games.js"></script>
+</body>
+</html>
