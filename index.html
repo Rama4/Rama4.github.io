@@ -1,239 +1,182 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-		<meta name="description" content="Rubik’s Cube">
-		<meta name="keywords" content="Rama Rubik’s Cube">
-
-
-		<link rel="stylesheet" type="text/css" href="build/styles/cube.css">
-		<link rel="stylesheet" type="text/css" href="examples/basic/styles/base.css">
-		<link rel="icon" type="image/png" href="build/media/cuber-favicon-0064x0064.png">
-		<link rel="apple-touch-icon" href="build/media/cuber-favicon-0144x0144.png">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rama Narasimhan</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<style>
+		.img-center {
+			margin: 0 auto;
+		}
+		footer {
+			margin: 50px 0;
+		}
 		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-		<title>Rama-Rubiks-cube</title>
-
-		<script charset="utf-8" src="src/scripts/vendor/tween.min.js"></script>
-
-
-		<!-- cube source code -->
-
-
-			<!--  Three.js  -->
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/Three.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/core/EventDispatcher.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Math.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Quaternion.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Vector2.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Vector3.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Box3.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Sphere.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Euler.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Matrix3.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Matrix4.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/core/Object3D.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/cameras/Camera.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/cameras/PerspectiveCamera.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Ray.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/threejs/src/math/Plane.js"></script>
-
-
-			<!--  Here are the Cube guts. Enjoy.  -->
-			<script charset="utf-8" src="src/scripts/ERNO.js"></script>
-			<script charset="utf-8" src="src/scripts/rubik3x3.js"></script>
-			<script charset="utf-8" src="src/scripts/vendor/CSS3DRenderer.js"></script>
-			<script charset="utf-8" src="src/scripts/utils/utils.js"></script>
-			<script charset="utf-8" src="src/scripts/utils/Number.js"></script>
-			<script charset="utf-8" src="src/scripts/utils/String.js"></script>
-			<script charset="utf-8" src="src/scripts/utils/Array.js"></script>
-			<script charset="utf-8" src="src/scripts/colors.js"></script>
-			<script charset="utf-8" src="src/scripts/directions.js"></script>
-			<script charset="utf-8" src="src/scripts/queues.js"></script>
-			<script charset="utf-8" src="src/scripts/twists.js"></script>
-			<script charset="utf-8" src="src/scripts/cubelets.js"></script>
-			<script charset="utf-8" src="src/scripts/groups.js"></script>
-			<script charset="utf-8" src="src/scripts/slices.js"></script>
-			<script charset="utf-8" src="src/scripts/folds.js"></script>
-			<script charset="utf-8" src="src/scripts/projector.js"></script>
-			<script charset="utf-8" src="src/scripts/interaction.js"></script>
-			<script charset="utf-8" src="src/scripts/controls.js"></script>
-			<script charset="utf-8" src="src/scripts/cubes.js"></script>
-			<script charset="utf-8" src="src/scripts/solvers.js"></script>
-			<script charset="utf-8" src="src/scripts/renderer.js"></script>
-			<script charset="utf-8" src="src/scripts/main.js"></script>
+		body{
+		   background:#f0f0f0;
+		}
+		hr{    
+		   border-top: 1px solid black;
+		}
+		.soci {
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			padding:20px;
+			flex: 1;
+		}
+		 
+		.soci li {
+		list-style-type: none;
+		   float: left;
+		}
+		 
+		.social{
+			background: #205D7A;
+			color: #fff;
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			font-size: 25px;
+			text-align: center;
+			margin-right: 10px;
+			padding-top: 15%;   /*control vertical align of text inside circle*/
+			transition: all 0.2s ease-in-out;
+		   }
 		
-		<!-- implementation -->	
-		<script charset="utf-8" src="examples/basic/scripts/jquery.js"></script>
-		<script charset="utf-8" src="src/scripts/extras/renderers/iecss3d.js"></script>
-		<script charset="utf-8" src="src/scripts/extras/renderers/ierenderer.js"></script>
-		<script charset="utf-8" src="src/scripts/extras/controls/locked.js"></script>
-		<script charset="utf-8" src="src/scripts/extras/deviceMotion.js"></script>	
+		.fa-facebook {
+			background:#3b5998
+		} 
+		.fa-linkedin {
+			background:#007bb6
+		}
+		
+		.fa-github {
+		 background: black;
+		 color: white;
+		 }
+		
+		.fa-google-plus {
+			background:#dd4b39
+		}
+		.soci li a i:hover {
+			opacity: .7;
+		}
+		.page-header{
+		   color:black;
+		}
+		img{
+		   font-size:100px;
+		}
+		#projects_grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content:space-around;
+			align-items: center;
+			height: 100%;
+		}
+		.thumbnail{
+			background:#232323;
+			color: black;
+		}
+		a.thumbnail:hover {
+			text-decoration: none;
+		
+		}
+		a.thumbnail{
+			text-decoration: none;	
+		}
+		
+		.project-item {
+			background: #232323;
+			color:#f0f0f0;
+			text-decoration: none;
+			width: 23%;
+			padding: 20px;
+			height: 100%;
+			min-height: 200px;
+		}
+		.project-item:hover {
+			color: #232323;
+			background: #e0e0e0;
+			text-decoration: none;
+		}
 
-	</head>
-	<body>
-	<nav class="navbar navbar-inverse" >
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMain" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Rubik's Cube Solver</a>
+		#profile {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: flex-start;
+			flex: 1;
+		}
+
+		#sidebar {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: space-around;
+			width: 30%;
+			max-width: 400px;
+		}
+
+		#about {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			width: 50%;
+			min-width: 400px;
+		}
+
+	</style>
+</head>
+<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Rama Narasimhan</h1>
+				</div>
 			</div>
 			
-			<div class="collapse navbar-collapse" id="navbarMain">
-				<ul class="nav navbar-nav">
-					<li id="help"><a href="help.html">Help</a></li>
-					<li><a href="#" id="scramble">Scramble</a></li>
-					<li><a href="/">Reset Cube</a></li>
-					<li><a href="#" id="solve3x3">Solve</a></li>
-				</ul>	
-				<ul class="nav navbar-nav">
-					<li><div class="input-group">
-							<input id="moves-input" name="moveslist" type="text" class="form-control" placeholder="R' D' R D">
-							<div class="input-group-btn">
-								<button id="moves-submit" class="btn btn-default">Submit</button>
-							</div>
-						</div>
-					</li>
-				</ul>
+			<div class="row" id="profile">
+				<div id="sidebar">
+					<img class="img-circle img-responsive img-center" height='200' width='200' src="https://avatars.githubusercontent.com/u/19623200?v=4" alt="">
+					<div class="row">
+						<ul class="soci">
+							<li><a href="https://www.linkedin.com/in/rama-narasimhan"><i class="social fa fa-linkedin"></i></a></li>
+							<li><a href="https://github.com/Rama4"><i class="social fa fa-github" aria-hidden="true"></i></a></li>
+						 </ul>
+					</div>
+				</div>
+				<div class="text-center" id="about">
+					<p>
+						I'm a Software Developer in Tesr at Amazon with 3+ years of Professional work experience in frontend application development.
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="container">
+				<h2>Undergraduate Projects</h2>
+				<div id= "projects_grid" class="row">
+					<a href="Projects/Rubiks Cube Solver/cube.html" class="thumbnail col-md-3 col-sm-3 col-xs-12 project-item">
+						<h4 class="text-center">Rubik's Cube Solver</h4>
+						<p class="text-center">An interactive web app where users can play with the rubik's cube and learn to solve it.</p>
+					</a>
+					<a href="https://pragnaiitjee.herokuapp.com/" class="thumbnail col-md-3 col-sm-3 project-item">
+						<h4 class="text-center">Website for conducting online tests</h4>
+						<p class="text-center">A Website where teachers can upload questions, create and schedule online tests for students.</p>
+					</a>
+					<a href="Projects/Imaginary City Maps/maps.html" class="thumbnail col-md-3 col-sm-3 project-item">
+						<h4 class="text-center">Imaginary City Maps</h4>
+						<p class="text-center">Imaginary City Maps drawn during my middle, high-school and undergraduate years, as part of my interest in designing transportation for cities with varying geographies and population densities.</p>
+					</a>
+					<a href="Projects/koolman/views/landing.html" class="thumbnail col-md-3 col-sm-3 project-item">
+						<h4 class="text-center">Memory Game</h4>
+						<p class="text-center">A Game that i developed in the given time of 24hrs, as part of Daksh Web-Design contest by SASTRA University on Feb 2017 (Won 3rd place overall across all colleges in Tamil Nadu state).</p>
+					</a>
+				</div>
 			</div>
 		</div>
-	</nav>
-	<div class="graydient">
-		<div id="container" ></div>
-		<div id="fail">
-			<h1>Sorry,</h1>
-			<h2>Cubers broken</h2>
-		</div>
-	</div>
-	<br>		
-	<div class="row" id="solution-box">
-	</div>
-	
-	<script>	
-		var ind=0,k=0,noturn=0;
-		var RUBIK;	// declaring the variable here and initialising  in main.js, to not get 'RUBIK is not defined' in any file.
-		var Gcube;
-		
-        $('#solution-box').hide();
-		var get_ind = function(s)
-		{
-			s = s.substring(4,s.length);
-			return parseInt(s);
-		};
-		$('#moves-submit').click(function()
-		{
-			var inp = $('#moves-input').val();
-			RUBIK.parse(inp);
-		});
-		
-		$("#scramble").click(function()
-		{
-			RUBIK.scramble();    
-		});
-		
-		var a_color = "orange";
-		var na_color = "white";
-		$('#solve3x3').click(function()
-		{   
-			noturn = 1;	
-			// disable keyboard and mouse controls
-			Gcube.mouseControlsEnabled = false;
-			Gcube.keyboardControlsEnabled = false;	
-			
-			RUBIK.solve3x3();
-			
-			noturn = 0;
-			RUBIK.string_to_b(RUBIK.states[0]);
-			var innerHTML  = "";
-            for(var k=0;k<3;k++)
-            {
-                innerHTML += '<h4><strong>layer '+(k+1)+'</strong></h4>';
-                for(var i=0;i<RUBIK.ml[k].length;i++)
-                {
-                    innerHTML += '<span id=\'move'+k+i+'\'>'+RUBIK.ml[k][i]+'</span> ';
-                }
-                innerHTML += '<br>';
-            }
-			innerHTML += "<br><div class=\'row text-center\'>";
-			innerHTML += "<div class=\"btn\" id=\"prev\"><</div> ";
-			innerHTML += "<div class=\"btn\" id=\"next\">></div> ";
-			innerHTML += "</div>";
-			$('#solution-box').html(innerHTML);
-			$("#move00").css("color",a_color);
-			
-            $('#solution-box').show(1000);
-			
-            var ele=null;
-            k=ind=0;
-            $('#prev').click(function()
-			{
-				ele = '#move'+k+ind;
-				$(ele).css("color","white");  
-				if(ind > 0)
-				{	
-					RUBIK.parse(RUBIK.ml[k][ind],true);
-					ind--;
-				}
-                else if(k > 0)
-                {
-                    --k;
-                    ind = RUBIK.ml[k].length-1;
-                }
-				ele = "#move"+k+ind;
-				$(ele).css("color",a_color);
-				
-			
-			});
-			$('#next').click(function()
-			{
-				ele = '#move'+k+ind;
-				$(ele).css("color",na_color);  
-				if(RUBIK.ml[k].length > 1 && ind < RUBIK.ml[k].length-1)				
-				{
-					RUBIK.parse(RUBIK.ml[k][ind+1]); 
-					ind++;
-				}
-                else if(k<2)
-                {
-                    ++k;
-                    ind = 0;
-                }
-				ele = "#move"+k+ind;
-				$(ele).css("color",a_color);
-			});
-			var activeItem = null;
-			$("#solution-box>span").hover(
-				function() // mouse enter
-				{
-					$(this).css("background",a_color);
-				},
-				function() // mouse leave
-				{
-					if(activeItem != this)
-						$(this).css("background","rgba(255,0,0,0.15)");  
-				});
-			$("#solution-box>span").click(function() 
-			{
-				ele = '#move'+k+ind;
-				$(ele).css("background","rgba(255,0,0,0.15)");  
-				$(this).css("background",a_color);
-				ind = get_ind(this.id);
-				activeItem = this;
-			});
-		});
-	</script>
-	</body>
+</body>
 </html>

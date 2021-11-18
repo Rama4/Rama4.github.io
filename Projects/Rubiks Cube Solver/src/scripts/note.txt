@@ -1,0 +1,1 @@
+change cube animation duration : cubes.js -> twistDuration
