@@ -61,8 +61,6 @@ if(current_game == GAME_ENUM.NONE)
 
 console.log("current game = " + current_game);
 
-
-
 //-------------------------------------------------------------------
 // Game 1
 //-------------------------------------------------------------------
@@ -300,7 +298,7 @@ if(current_game == GAME_ENUM.KOOLMAN) {
     }
 
     function showCircle(circle) {
-    circle.visibleCountdown = circle.visibleDuration;
+        circle.visibleCountdown = circle.visibleDuration;
     }
 
     /*------------------------------------------------------------------------------------*/
@@ -337,7 +335,6 @@ if(current_game == GAME_ENUM.KOOLMAN) {
     $("#quit").on("click", () => {
         localStorage['current_game'] = GAME_ENUM.SCORES.toString();
     });
-    setup();
         
 }
 
@@ -353,7 +350,6 @@ if(current_game == GAME_ENUM.BUBBLES)
     var wrong = 0;
     var totalClicks=0;
     $('#msg').hide();
-    //$("#quit").hide();
 
     $('body').click(function()
     {
@@ -375,7 +371,6 @@ if(current_game == GAME_ENUM.BUBBLES)
             console.log("wrong="+wrong);
             $('#msg').show(1000);
             save_game_score(GAME_ENUM.BUBBLES, score);
-            // $.post( "/score3", { score:score} );
         }
         console.log(this.className);
             $(this).remove();
@@ -385,9 +380,9 @@ if(current_game == GAME_ENUM.BUBBLES)
     });
 
     $('#quit').click(function(event) {
+        event.stopImmediatePropagation();
         save_game_score(GAME_ENUM.BUBBLES, score);
         localStorage['current_game'] = GAME_ENUM.SCORES.toString();
-        // $.post( "/score3", { score:score} ); 
     });
 
     $("#msg").on("click", function(){

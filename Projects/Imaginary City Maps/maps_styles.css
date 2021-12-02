@@ -54,8 +54,13 @@ body, html {
 }
 
 #desc-btn-row {
+  color: white;
   display: flex;
   justify-content: space-around;
+}
+
+#desc-btn-row button {
+  width: 30%;
 }
 
 .hide {
@@ -79,7 +84,7 @@ body, html {
 }
 
 /* img tag in area div */
-.area IMG {
+.area img {
   display: block;
   max-width: 100%;
   pointer-events: none;
@@ -101,9 +106,9 @@ body, html {
 /* rectangle div in area div */
 .area .rect {
   opacity: 0;
-  transition: all 0s ease;
+  transition: all 0.5s ease;
   position: absolute;
-  border: 1px solid red;
+  border: 1px solid steelblue;
   z-index: 100;
 }
 
