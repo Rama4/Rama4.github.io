@@ -1,0 +1,295 @@
+
+* {margin: 0;padding: 0}
+html, body {height:100%; }
+body {
+    background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF);
+    background: linear-gradient(to left, #2C3E50, #4CA1AF);
+	font-family: 'Cherry Swash', trebuchet ms, cursive;
+	font-size:1.5em; 
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+div#lab {
+	position:fixed; 
+	right:1.5em; 
+	bottom:0
+}
+@keyframes greenPulse1 {
+0% {box-shadow:0 0 30px magenta}
+50% {box-shadow:0 0 80px magenta}
+100% {box-shadow:0 0 30px magenta}
+}
+@keyframes greenPulse2 {
+0% {box-shadow:0 0 30px yellow}
+50% {box-shadow:0 0 80px yellow}
+100% {box-shadow:0 0 30px yellow}
+}
+@keyframes greenPulse3 {
+0% {box-shadow:0 0 30px cyan}
+50% {box-shadow:0 0 80px cyan}
+100% {box-shadow:0 0 30px cyan}
+}
+@keyframes greenPulse4 {
+0% {box-shadow:0 0 30px lime}
+50% {box-shadow:0 0 80px lime}
+100% {box-shadow:0 0 30px lime}
+}
+@keyframes greenPulse5 {
+0% {box-shadow:0 0 30px #FF4500}
+50% {box-shadow:0 0 80px #FF4500}
+100% {box-shadow:0 0 30px #FF4500}
+}
+@keyframes greenPulse6 {
+0% {box-shadow:0 0 30px red}
+50% {box-shadow:0 0 80px red}
+100% {box-shadow:0 0 30px red}
+}
+
+div#cont {
+	width:1300px;
+	height:700px;
+	margin:0 auto;
+	position:relative
+}
+
+@keyframes bubbleUp {
+0% {bottom:110px;-webkit-transform:scale(.9);opacity:1}	/*initial*/
+1% {bottom:110px;-webkit-transform:scale(.3);opacity:1}
+30% {bottom:110px;left:500px;-webkit-transform:scale(.8);opacity:1}
+40% {bottom:120px;left:700px;transform:scale(.2);opacity:1}
+95% {bottom:545px;-webkit-transform:scale(.3);opacity:1}
+100% {bottom:110px;-webkit-transform:scale(.9);opacity:1}	/*just as the bubble pops, another similar bubble is created @ down*/
+}
+@keyframes bubbleUp1 {
+0% {bottom:120px;left:200px;transform:scale(.1);opacity:1}
+1% {bottom:80px;left:200px;transform:scale(.9);opacity:1}
+30% {bottom:90px;left:1100px;transform:scale(.3);opacity:1}
+40% {bottom:120px;left:700px;transform:scale(.5);opacity:1}
+95% {bottom:500px;left:100px;transform:scale(.2);opacity:0.5}
+/*99% {bottom:550px;transform:scale(.2);opacity:0}*/
+100% {bottom:140px;transform:scale(.1);opacity:0}
+}
+@keyframes bubbleUp2 {
+0% {bottom:110px;left:400px;transform:scale(1);opacity:1}
+1% {bottom:110px;left:400px;transform:scale(.3);opacity:1}
+30% {bottom:110px;transform:scale(.9);opacity:1}
+40% {bottom:110px;transform:scale(.9);opacity:1}
+60% {bottom:370px;left:1200px;transform:scale(.9);opacity:1}
+95% {bottom:512px;left:100px;transform:scale(.3);opacity:1}
+/*99% {bottom:655px;transform:scale(3);opacity:0}*/
+100% {bottom:110px;transform:scale(1);opacity:1}
+}
+@keyframes bubbleUp3 {
+0% {bottom:110px;left:600px;transform:scale(1);opacity:1}
+1% {bottom:110px;left:634px;transform:scale(.3);opacity:1}
+30% {bottom:110px;transform:scale(.9);opacity:1}
+95% {bottom:495px;left:340px;transform:scale(.3);opacity:1}
+/*99% {bottom:500px;transform:scale(3);opacity:0}*/
+100% {bottom:110px;transform:scale(1);opacity:1}
+}
+@keyframes bubbleUp4 {
+0% {bottom:110px;left:800px;transform:scale(1);opacity:1}
+1% {bottom:110px;left:830px;transform:scale(.3);opacity:1}
+30% {bottom:110px;transform:scale(.9);opacity:1}
+95% {bottom:595px;left:100px;transform:scale(.3);opacity:1}
+/*99% {bottom:600px;transform:scale(3);opacity:1}*/
+100% {bottom:110px;transform:scale(1);opacity:1}
+}
+@keyframes bubbleUp5 {
+0% {bottom:110px;left:1000px;transform:scale(1);opacity:0.5}
+1% {bottom:110px;left:1030px;transform:scale(.3);opacity:0.2}
+30% {bottom:340px;left:470px;transform:scale(.9);opacity:0.7}
+95% {bottom:595px;left:500px;transform:scale(.3);opacity:0.3}
+/*99% {bottom:600px;transform:scale(3);opacity:1}*/
+100% {bottom:110px;left:1000px;transform:scale(1);opacity:1}
+}
+
+span.glow {
+	width:100%;
+	height:100%;
+	position:relative;
+	display:block;
+	border-radius:200px;
+	animation:greenPulse 2s infinite;
+}
+span.glow1 {
+	background:##222;
+	-webkit-animation:greenPulse1 2s infinite;
+	-moz-animation:greenPulse1 2s infinite;
+	-o-animation:greenPulse1 2s infinite;
+}
+span.glow2 {
+	background:##222;
+	-webkit-animation:greenPulse2 2s infinite;
+	-moz-animation:greenPulse2 2s infinite;
+	-o-animation:greenPulse2 2s infinite;
+}
+span.glow3 {
+	background:##222;
+	-webkit-animation:greenPulse3 2s infinite;
+	-moz-animation:greenPulse3 2s infinite;
+	-o-animation:greenPulse3 2s infinite;
+}
+span.glow4 {
+	background:##222;
+	-webkit-animation:greenPulse4 2s infinite;
+	-moz-animation:greenPulse4 2s infinite;
+	-o-animation:greenPulse4 2s infinite;
+}
+span.glow5 {
+	background:##222;
+	-webkit-animation:greenPulse5 2s infinite;
+	-moz-animation:greenPulse5 2s infinite;
+	-o-animation:greenPulse5 2s infinite;
+}
+span.glow6 {
+	background: ##222;
+	-webkit-animation:greenPulse6 2s infinite;
+	-moz-animation:greenPulse6 2s infinite;
+	-o-animation:greenPulse6 2s infinite;
+}
+
+span.bubble {
+	background:#fff;
+	width:80px;
+	height:80px;
+	position:absolute;
+	display:block;
+	left:110px;
+	bottom:110px;
+	border-radius:100px; 
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(255,0,255,.7)));
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background:gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	animation:bubbleUp 4s infinite ease-in;
+	-webkit-animation:bubbleUp 4s infinite ease-in-out;
+	-o-animation:bubbleUp 4s infinite ease-in-out;
+	-moz-animation:bubbleUp 4s infinite ease-in-out;
+}
+span.bubble1 {
+	background:#fff;
+	width:80px;
+	height:80px;
+	position:absolute;
+	display:block;
+	left:110px;
+	bottom:110px;
+	border-radius:60px;
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(255,255,0,.7)));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	animation:bubbleUp 7s infinite ease-in;
+	-webkit-animation:bubbleUp1 7s infinite;
+	-o-animation:bubbleU	p1 7s infinite;
+	-moz-animation:bubbleUp1 7s infinite;
+}
+span.bubble2 {
+	background:#fff;
+	width:50px;
+	height:50px;
+	position:absolute;
+	display:block;
+	left:110px;
+	bottom:110px;
+	border-radius:60px;
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(0,255,255,.7)));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	animation:bubbleUp 7s infinite;
+	-webkit-animation:bubbleUp2 7s infinite  ease-in;
+	-o-animation:bubbleUp2 7s infinite;
+	-moz-animation:bubbleUp2 7s infinite;
+}
+span.bubble3 {
+	background:#fff;
+	width:50px;
+	height:50px;
+	position:absolute;
+	display:block;
+	left:140px;
+	bottom:95px;
+	border-radius:100px;
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(200,200,200,0), rgba(100,200,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(0,255,0,.7)));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	
+	animation:bubbleUp 10s infinite;
+	-webkit-animation:bubbleUp3 10s infinite ease-in;
+	-o-animation:bubbleUp3 10s infinite;
+	-moz-animation:bubbleUp3 10s infinite;
+}
+span.bubble4 {
+	background:red;
+	width:90px;
+	height:90px;
+	position:absolute;
+	display:block;
+	left:155px;
+	bottom:110px;
+	border-radius:100px;	
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(255,69,0,.7)));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	animation:bubbleUp4 8s infinite;
+	-webkit-animation:bubbleUp4 8s infinite ease-in;
+	-o-animation:bubbleUp4 8s infinite;
+	-moz-animation:bubbleUp4 8s infinite;
+}
+span.bubble5 {
+	background:#fff;
+	width:90px;
+	height:90px;
+	position:absolute;
+	display:block;
+	left:305px;
+	bottom:500px;
+	border-radius:100px;	
+	background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(255,153,0,0), rgba(255,153,0,.1), rgba(255,153,0,.3), rgba(255,0,0,.7));
+	background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(255,255,255,.2)), to(rgba(255,0,0,.7)));
+	background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
+	animation:bubbleUp 12s infinite;
+	-webkit-animation:bubbleUp5 5s infinite ease-in;
+	-o-animation:bubbleUp5 5s infinite;
+	-moz-animation:bubbleUp5 5s infinite;
+}
+
+#scorebar{
+	position:fixed;
+	top:50px;
+	right:10px;
+	height:200px;
+	width:400px;
+		color:#e0e0e0;
+		text-align: center;
+		font-size:25px;
+}
+
+#score{
+	display: inline-block;  
+	margin:0 auto;
+	color:#e0e0e0;	
+}
+#wrong{
+	 display: inline-block;  
+	
+}
+#quit{
+		background:#e0e0e0;
+		color:steelblue;
+}
+#msg{
+		position:fixed;
+		top : 40%;
+		left:40%;
+		background:#e0e0e0;
+		color:steelblue;
+}
+#msg:hover,#quit:hover{
+		background:steelblue;
+		color:#e0e0e0;
+}
