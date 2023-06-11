@@ -1,0 +1,66 @@
+{
+    "profile": {
+        "bio": [
+                "I'm a Master of Computer Science (MCS) student at Arizona State University.",    
+                "I come with 4+ years of industry experience in Software Engineering working with companies like Amazon and Gen. During this time, I have had the opportunity to work on multiple projects spanning a wide range of domains like UX Automation library development, Windows and Linux client-side application development and mobile application development.",
+                "My key skills include C++, React-Native, Node.js and Python."
+            ],
+        "resume": "Rama_Narasimhan_Resume.pdf",
+        "social": {
+            "github": "https://github.com/Rama4",
+            "linkedin": "https://www.linkedin.com/in/rama-narasimhan/",
+            "email": "mailto:m.rama.narasimhan@gmail.com"
+        }
+    },
+    "undergradProjects" : [
+        {
+            "name": "Rubik's Cube Solver",
+            "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
+            "stacks" : "Tech Stack : Chrome cube labs, Javascript, jQuery",
+            "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
+            "demoLink": "Projects/Rubiks Cube Solver/cube.html",
+            "imgPath": "projects/rubik.gif",
+            "isStatic" : true
+        },
+        {
+            "name": "Website for test-taking",
+            "description": "A Full-Stack website where teachers can upload questions, create and schedule online tests for students.",
+            "stacks" : "Tech Stack : Javascript, jQuery, Node.js, Express.js, MongoDB",
+            "ghLink" : "https://github.com/Rama4/pragna",
+            "demoLink": "",
+            "imgPath": "projects/pragna.jpg",
+            "isStatic" : false
+        },
+        {
+            "name": "Memory Game",
+            "description": "A Game that i developed in the given time of 24hrs, as part of Daksh Web-Design contest by SASTRA University on Feb 2017 (Won 3rd place overall across all colleges in Tamil Nadu state).",
+            "stacks" : "Tech Stack : Javascript, jQuery",
+            "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Koolman%20Memory%20Game",
+            "demoLink": "Projects/Koolman Memory Game/views/koolman.html",
+            "imgPath": "projects/koolman.gif",
+            "isStatic" : true
+        }    
+    ],
+    "projects" : [
+        {
+            "name": "Media Slideshow",
+            "description": "A Full-Stack website where users can upload images, videos URLs, and configure the content and playlist to be displayed on different TVs in the Office.",
+            "stacks" : "Tech Stack : Angular, Node.js, Express.js, MongoDB",
+            "ghLink" : "https://github.com/Rama4/media_slideshow",
+            "demoLink": "",
+            "imgPath": "",
+            "isStatic" : false
+        },
+        {
+            "name": "Benefit Live Booking Platform",
+            "description": "A website for Loudoun county musicians to register and be requested to perform for events by organizers.",
+            "stacks" : "Tech Stack : React.js",
+            "ghLink" : "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
+            "demoLink": "",
+            "imgPath": "projects/benefit.jpg",
+            "isStatic" : false
+        }
+    ]
+
+
+}
