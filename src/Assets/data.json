@@ -19,7 +19,7 @@
             "stacks" : "Tech Stack : Chrome cube labs, Javascript, jQuery",
             "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
             "demoLink": "Projects/Rubiks Cube Solver/cube.html",
-            "imgPath": "projects/rubik.gif",
+            "imgPath": "Projects/rubik.gif",
             "isStatic" : true
         },
         {
@@ -28,7 +28,7 @@
             "stacks" : "Tech Stack : Javascript, jQuery, Node.js, Express.js, MongoDB",
             "ghLink" : "https://github.com/Rama4/pragna",
             "demoLink": "",
-            "imgPath": "projects/pragna.jpg",
+            "imgPath": "Projects/pragna.jpg",
             "isStatic" : false
         },
         {
@@ -37,7 +37,7 @@
             "stacks" : "Tech Stack : Javascript, jQuery",
             "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Koolman%20Memory%20Game",
             "demoLink": "Projects/Koolman Memory Game/views/koolman.html",
-            "imgPath": "projects/koolman.gif",
+            "imgPath": "Projects/koolman.gif",
             "isStatic" : true
         }    
     ],
@@ -57,7 +57,7 @@
             "stacks" : "Tech Stack : React.js",
             "ghLink" : "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
             "demoLink": "",
-            "imgPath": "projects/benefit.jpg",
+            "imgPath": "Projects/benefit.jpg",
             "isStatic" : false
         }
     ]
