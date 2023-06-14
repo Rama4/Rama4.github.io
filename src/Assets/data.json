@@ -18,8 +18,8 @@
             "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
             "stacks" : "Tech Stack : Chrome cube labs, Javascript, jQuery",
             "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
-            "demoLink": "Projects/Rubiks Cube Solver/cube.html",
-            "imgPath": "Projects/rubik.gif",
+            "demoLink": "./Projects/Rubiks Cube Solver/cube.html",
+            "imgPath": "./Projects/rubik.gif",
             "isStatic" : true
         },
         {
@@ -28,7 +28,7 @@
             "stacks" : "Tech Stack : Javascript, jQuery, Node.js, Express.js, MongoDB",
             "ghLink" : "https://github.com/Rama4/pragna",
             "demoLink": "",
-            "imgPath": "Projects/pragna.jpg",
+            "imgPath": "./Projects/pragna.jpg",
             "isStatic" : false
         },
         {
@@ -36,12 +36,21 @@
             "description": "A Game that i developed in the given time of 24hrs, as part of Daksh Web-Design contest by SASTRA University on Feb 2017 (Won 3rd place overall across all colleges in Tamil Nadu state).",
             "stacks" : "Tech Stack : Javascript, jQuery",
             "ghLink" : "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Koolman%20Memory%20Game",
-            "demoLink": "Projects/Koolman Memory Game/views/koolman.html",
-            "imgPath": "Projects/koolman.gif",
+            "demoLink": "./Projects/Koolman Memory Game/views/koolman.html",
+            "imgPath": "./Projects/koolman.gif",
             "isStatic" : true
         }    
     ],
     "projects" : [
+        {
+            "name": "Benefit Live Booking Platform",
+            "description": "A website for Loudoun county musicians to register and be requested to perform for events by organizers.",
+            "stacks" : "Tech Stack : React.js",
+            "ghLink" : "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
+            "demoLink": "https://booking-benefit-live.vercel.app/",
+            "imgPath": "./Projects/benefit.jpg",
+            "isStatic" : false
+        },
         {
             "name": "Media Slideshow",
             "description": "A Full-Stack website where users can upload images, videos URLs, and configure the content and playlist to be displayed on different TVs in the Office.",
@@ -49,15 +58,6 @@
             "ghLink" : "https://github.com/Rama4/media_slideshow",
             "demoLink": "",
             "imgPath": "",
-            "isStatic" : false
-        },
-        {
-            "name": "Benefit Live Booking Platform",
-            "description": "A website for Loudoun county musicians to register and be requested to perform for events by organizers.",
-            "stacks" : "Tech Stack : React.js",
-            "ghLink" : "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
-            "demoLink": "",
-            "imgPath": "Projects/benefit.jpg",
             "isStatic" : false
         }
     ]
