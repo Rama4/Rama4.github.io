@@ -45,7 +45,7 @@
         {
             "name": "Benefit Live Booking Platform",
             "description": "A website for Loudoun county musicians to register and be requested to perform for events by organizers.",
-            "stacks" : "Tech Stack : React.js",
+            "stacks" : "Tech Stack : React.js, redux, Styled-Components, react-router-dom",
             "ghLink" : "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
             "demoLink": "https://booking-benefit-live.vercel.app/",
             "imgPath": "./Projects/benefit.jpg",
