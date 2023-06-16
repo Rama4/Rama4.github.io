@@ -44,7 +44,7 @@ function ProjectCards(props) {
     <Card className="project-card-view">
       {props.imgPath?.length > 0 && <Card.Img variant="top" src={props.imgPath} alt="image" /> }
       <Card.Body>
-        <Card.Title><strong className="purple">{props.title}</strong></Card.Title>
+        <Card.Title>{props.title}</Card.Title>
         {props.imgPath?.length > 0 && <Card.Text style={{ textAlign: "justify" }}>{props.description}</Card.Text>}
         {props.stacks?.length > 0 && <Card.Text style={{ textAlign: "center" }}>{props.stacks}</Card.Text>}
         {props.ghLink?.length > 0 && 

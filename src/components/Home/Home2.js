@@ -11,9 +11,9 @@ const Home2 = () =>{
   const renderAvatar = () => {
     return (
       <Col md={4} className="myAvtar">
-        <Tilt>
+        {/* <Tilt> */}
           <img src="https://avatars.githubusercontent.com/u/19623200?s=400&u=5a2da11969fbc07f927096515727862504868627&v=4" className="img-fluid myphoto" alt="avatar" />
-        </Tilt>
+        {/* </Tilt> */}
       </Col>
     );
   }
@@ -22,7 +22,7 @@ const Home2 = () =>{
     return (
         <Col md={8} className="home-about-description">
           <h1 style={{ fontSize: "2.6em" }}>
-            <span className="purple"> ABOUT </span> ME
+            ABOUT ME
           </h1>
 
           {data.profile?.bio?.map(b =>
@@ -44,7 +44,7 @@ const Home2 = () =>{
         <Row>
           <Col md={12} className="home-about-social">
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Feel free to connect with me
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

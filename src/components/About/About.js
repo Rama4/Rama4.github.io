@@ -15,13 +15,13 @@ function About() {
           id="skills"
         ></Row>
         <h1 className="project-heading skills-section">
-          Professional <strong className="purple">Skillset </strong>
+          Professional Skillset
         </h1>
 
         <Techstack />
 
         <h1 className="project-heading">
-          <strong className="purple">Tools</strong> I use
+          Tools I use
         </h1>
         <Toolstack />
 

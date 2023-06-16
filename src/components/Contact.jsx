@@ -16,7 +16,7 @@ const Contact = () => {
           }}
         >
           <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-            Connect with <strong className="purple">ME</strong>
+            Connect with Me
           </h1>
           <AboutCard />
         </Col>

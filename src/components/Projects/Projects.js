@@ -61,11 +61,11 @@ function Projects() {
       <Particle />
       <Container>
         <h1 className="project-heading" >
-          My Recent <strong className="purple">Projects </strong>
+          My Recent Projects
         </h1>
         {renderProjects()}
         <h1 className="project-heading" >
-          My Undergrad <strong className="purple">Projects </strong>
+          My Undergrad Projects
         </h1>
         {renderUndergradProjects()}
         
