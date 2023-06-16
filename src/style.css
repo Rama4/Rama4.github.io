@@ -57,20 +57,16 @@ button:focus {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #2d1950;
+  background: rgba(27, 26, 46, 0.663);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(178, 121, 216, 0.959);
+  background: #e0e0e0;
+  /* background: rgba(178, 121, 216, 0.959); */
   border-radius: 12px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(222, 130, 235, 0.911);
-  border-radius: 12px;
-}
 
 /* --------- */
 /* Navbar Section  */
@@ -97,7 +93,7 @@ button:focus {
 
 .navbar-toggler span {
   display: block !important;
-  background-color: #be50f4 !important;
+  background-color: #e0e0e0 !important;
   height: 4px !important;
   width: 27px !important;
   margin-top: 5px !important;
@@ -194,7 +190,7 @@ button:focus {
   height: 5px;
   width: 0;
   border-radius: 16px;
-  background: #c95bf5;
+  background: #e0e0e0;
   bottom: 1px;
   left: 0;
   z-index: -1;
@@ -390,7 +386,7 @@ button:focus {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #68187a;
+  background: #e0e0e0;
   transition: 0.5s;
   transform: scale(0.9);
   z-index: -1;
@@ -398,13 +394,13 @@ button:focus {
 
 .home-social-icons:hover::before {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #801f95;
+  box-shadow: 0 0 15px #e0e0e0;
 }
 
 .home-social-icons:hover {
-  color: #87209e;
-  box-shadow: 0 0 5px #87209e;
-  text-shadow: 0 0 2px #87209e;
+  color: #292E49;
+  box-shadow: 0 0 5px #e0e0e0;
+  text-shadow: 0 0 2px #e0e0e0;
 }
 
 .social-icons {
@@ -414,7 +410,7 @@ button:focus {
 }
 
 .icon-colour {
-  color: #700c86 !important;
+  color: #292E49 !important;
 }
 
 /* --------- */
@@ -469,10 +465,10 @@ button:focus {
   padding-bottom: 30px !important;
   /* background-image: var(--section-background-color) !important; */
   
-  background: #BBD2C5;
-  background-image: linear-gradient(to left, rgba(27,20,41,0.90), rgba(20,15,35,0.50)), url('../public/Projects/Imaginary City Maps/m4/image-001.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
+  /* background: #BBD2C5; */
+  /* background-image: linear-gradient(to left, rgba(27,20,41,0.90), rgba(20,15,35,0.50)), url('../public/Projects/Imaginary City Maps/m4/image-001.jpg'); */
+  /* background-repeat: no-repeat; */
+  /* background-size: contain; */
 }
 
 .projects-sections {
@@ -488,7 +484,7 @@ button:focus {
 }
 
 .project-card-view {
-  box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459) !important;
+  box-shadow: 0 4px 5px 3px #292E49 !important;
   color: white !important;
   background-color: transparent !important;
   opacity: 0.9 !important;
@@ -498,7 +494,7 @@ button:focus {
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
+  box-shadow: 0 4px 4px 5px #e0e0e0 !important;
 }
 
 .blog-card {
@@ -511,7 +507,7 @@ button:focus {
 
 .blog-card-view {
   background-color: transparent !important;
-  box-shadow: 0 3px 3px 2px rgba(145, 77, 161, 0.459) !important;
+  box-shadow: 0 3px 3px 2px #292E49 !important;
   color: white !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
@@ -529,7 +525,7 @@ button:focus {
 .blog-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
-  box-shadow: 0 3px 3px 5px rgba(155, 88, 173, 0.65) !important;
+  box-shadow: 0 3px 3px 5px #e0e0e0 !important;
 }
 
 .card-img-top {
@@ -545,15 +541,17 @@ button:focus {
 }
 
 .btn-primary {
-  color: #fff !important;
-  background-color: #623686 !important;
-  border-color: #623686 !important;
+  color: #e0e0e0 !important;
+  background-color: #292E49 !important;
+  border: none !important;
+  /* border-color: #623686 !important; */
 }
 
 .btn-primary:hover {
-  color: #fff !important;
-  background-color: #6d20c5d7 !important;
-  border-color: #6d20c5d7 !important;
+  color: #292E49 !important;
+  background-color: #e0e0e0 !important;
+  border: none !important;
+  /* border-color: #6d20c5d7 !important; */
 }
 .btn:focus {
   outline: none !important;
@@ -586,10 +584,10 @@ button:focus {
   height: max-content;
   color: white !important;
 
-  background: #BBD2C5;
-  background-image: linear-gradient(to left, rgba(27,20,41,0.90), rgba(20,15,35,0.50)), url('../public/Projects/Imaginary City Maps/m5/image-000.jpg');
+  /* background: #BBD2C5; */
+  /* background-image: linear-gradient(to left, rgba(27,20,41,0.90), rgba(20,15,35,0.50)), url('../public/Projects/Imaginary City Maps/m5/image-000.jpg'); */
   /* background-repeat: no-repeat; */
-  background-size: cover;
+  /* background-size: cover; */
 
 
 }
@@ -612,7 +610,7 @@ button:focus {
 
 .contact_info {
   font-size: 0.6em;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.26);
+  box-shadow: 4px 5px 4px 3px #292E49;
   text-decoration: none;
   color: white;
   padding : 0.3em 1em;
@@ -620,7 +618,7 @@ button:focus {
 
 .contact_info:hover {
   color: white;
-  box-shadow: 0 0 7px #87209e;
+  box-shadow: 0 0 7px #e0e0e0;
   padding : 0.4em 1rem;
 }
 
@@ -629,12 +627,12 @@ button:focus {
   margin: 15px !important;
   padding: 10px !important;
   opacity: 0.93 !important;
-  border: 1.7px solid rgba(200, 137, 230, 0.637) !important;
+  border: 1.7px solid #e0e0e0 !important;
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 5px !important;
   display: table !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
+  box-shadow: 4px 5px 4px 3px #292E49 !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
 }
@@ -648,7 +646,7 @@ button:focus {
 .tech-icons:hover {
   transform: scale(1.05) !important;
   overflow: hidden !important;
-  border: 2.2px solid rgba(197, 115, 230, 0.883) !important;
+  border: 2.2px solid #e0e0e0 !important;
 }
 .tech-icon-images {
   padding: 20px !important;
