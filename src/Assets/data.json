@@ -43,9 +43,18 @@
   ],
   "projects": [
     {
-      "name": "Musician event booking platform",
+      "name": "Covid-19 Symptoms Logger",
+      "description": "Mobile app for measuring Heart Rate and Respiratory Rate and Logging symptoms data.",
+      "stacks": "Tech Stack : React Native, Redux, expo-camera, React Navigation, React Native Sensors",
+      "ghLink": "https://github.com/Rama4/Covid-19-Symptoms-Logger",
+      "demoLink": "",
+      "imgPath": "",
+      "isStatic": false
+    },
+    {
+      "name": "Musi cian event booking platform",
       "description": "A website for county musicians to register and be requested to perform for events by organizers.",
-      "stacks": "Tech Stack : React.js, redux, Styled-Components, react-router-dom",
+      "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
       "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
       "demoLink": "https://booking-benefit-live-client.onrender.com/",
       "imgPath": "./Projects/benefit.jpg",
