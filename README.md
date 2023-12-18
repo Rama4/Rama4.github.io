@@ -14,6 +14,7 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
+
 </center>
 
 ## Built With
@@ -28,6 +29,7 @@ This project was built using these technologies.
 - CSS3
 - VsCode
 - Vercel
+- serve (to serve the single page application)
 
 ## Features
 
@@ -55,6 +57,15 @@ The page will reload if you make edits.
 
 Open the project folder and Navigate to `/src/components/`. <br/>
 You will find all the components used and you can edit your information accordingly.
+
+## Run in production
+
+make sure you have serve installed using `npm -g serve`
+
+```
+npm run build
+serve build
+```
 
 ### Show your support
 
