@@ -29,3 +29,4 @@ Server/node_modules
 Server/config.js
 # Local Netlify folder
 .netlify
+.vscode/
