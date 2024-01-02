@@ -111,8 +111,7 @@
 		</div>
 	</div>
 	<br>		
-	<div class="row" id="solution-box">
-	</div>
+	<div class="row" id="solution-box"></div>
 	<div class="row" id="solution-guide"></div>
 
 	
@@ -196,8 +195,8 @@
             var ele=null;
             k=ind=0;
 			let solutionHTML = "<div class=\'row text-center\'>";
-			solutionHTML += `<h3 >Layer:<span id="solution-guide-layer">${k}</span></h3>`;
-			solutionHTML += `<h4 >Step:<span id="solution-guide-step">${ind}</span></h4>`;
+			solutionHTML += `<h3 >Solving layer : <span id="solution-guide-layer">${k+1}</span></h3>`;
+			solutionHTML += `<h4 >Step : <span id="solution-guide-step">${ind}</span></h4>`;
 			solutionHTML += `<p id="solution-guide-description"></p>`;
 			solutionHTML += "</div>";
 			
@@ -274,6 +273,8 @@
 				ind = get_ind(this.id);
 				k = get_k(this.id);
 				activeItem = this;
+				$('#solution-guide-layer').html(k+1);
+				$('#solution-guide-step').html(ind+1);
 				RUBIK.go_to_move_in_solution(from_k,from_ind ,k,ind);
 			});
 		});

@@ -902,7 +902,6 @@ class Rcube
 		return (this.rubiksCube[this.top][0][1] == 'Y'&&this.rubiksCube[this.top][1][0] == 'Y'&&this.rubiksCube[this.top][1][2] == 'Y'&&this.rubiksCube[this.top][2][1] == 'Y');
 	}
 	
-	// nana
 	layer3()
 	{
 		this.reset_saved_pieces();
