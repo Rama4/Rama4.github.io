@@ -10,8 +10,8 @@ class Rcube
     {
 		Gcube = cube;
 		let i,j;
-        let mlk=0,store=0;
-        let MoveMap=[],InvMoveMap=[],E3Arr=[],C3Arr=[],savedEdgeArr=[],savedCornerArr=[];      
+        let store=0;
+        let MoveMap=[],InvMoveMap=[],EdgePieceArr=[],CornerPieceArr=[],savedEdgeArr=[],savedCornerArr=[];      
         let left=0,front=1,right=2,back=3,top=4,down=5,ck=6,ack=7;    
         let col = [];	// for coloring tiles in css
         col["O"]="orange";col["W"]="white";col["R"]="red";col["Y"]="yellow";col["B"]="blue";col["G"]="green";
@@ -71,7 +71,7 @@ class Rcube
 		savedEdgeArr['O'] = 0,savedEdgeArr['W'] = 0,savedEdgeArr['R'] = 0,savedEdgeArr['Y'] = 0,savedEdgeArr['B'] = 0,savedEdgeArr['G'] = 0;
 		savedCornerArr["B R"] = 0,savedCornerArr["B O"] = 0,savedCornerArr["G O"] = 0,savedCornerArr["G R"] = 0;
 		// edge pieces of 3x3
-         E3Arr = 
+        EdgePieceArr = 
         [ 
          {i:front,j:0,k:1},{i:front,j:1,k:2},{i:front,j:2,k:1},{i:front,j:1,k:0},{i:back,j:0,k:1},{i:back,j:1,k:2}, 
 		 {i:back,j:2,k:1},{i:back,j:1,k:0},{i:top,j:1,k:0},{i:top,j:1,k:2},{i:down,j:1,k:0},{i:down,j:1,k:2},
@@ -80,7 +80,7 @@ class Rcube
          {i:down,j:2,k:1},{i:right,j:1,k:2},{i:left,j:0,k:1}, {i:right,j:0,k:1},{i:left,j:2,k:1},{i:right,j:2,k:1} 
          ];
 		// corner pieces of 3x3 
-		C3Arr = 
+		CornerPieceArr = 
 		[
 		{i:top,j:0,k:0},{i:top,j:0,k:2},{i:top,j:2,k:0},{i:top,j:2,k:2},{i:down,j:0,k:0},{i:down,j:0,k:2},{i:down,j:2,k:0},{i:down,j:2,k:2},
 		//mapped values
@@ -95,15 +95,15 @@ class Rcube
         this.MoveMap = MoveMap;
         this.InvMoveMap = InvMoveMap;
         this.InvMove = InvMove;
-        this.E3Arr = E3Arr;
-        this.C3Arr = C3Arr;
+        this.EdgePieceArr = EdgePieceArr;
+        this.CornerPieceArr = CornerPieceArr;
         this.savedEdgeArr = savedEdgeArr;
         this.savedCornerArr = savedCornerArr;
         
         this.moves = moves;
         this.moves2 = moves2;
         this.solution_moves_list = solution_moves_list;
-        this.mlk = mlk;
+        this.solution_layer = 0;
         this.store = store;
         this.rubiksCube = b;	// 3x3x3 cube -> 6 * 3 * 3 in dimension
         this.t = t;	// temporary array used in rotate functions
@@ -120,7 +120,7 @@ class Rcube
         this.col = col;
 		// Use const for variables that don't change
 		this.defaultDimension = 3;
-		this.move_descriptions = []; // store move descriptions
+		this.move_descriptions = new Array(3);// store move descriptions
 
 		this.reset_cube();
         this.disp();
@@ -310,11 +310,11 @@ class Rcube
         for(i=0;i<movesArr?.length;i++)
         {
             tt = movesArr[i];
-			if(tt == "")
+			if(!tt.length)
 				continue;
             this.moves.push(tt);
             if(this.store)  // if store !=0 (i.e solving mode), store move in corresponding layer
-                this.solution_moves_list[this.mlk].push(tt);
+                this.solution_moves_list[this.solution_layer].push(tt);
 			if(!isNaN(tt[0]))
             {                
                 num = tt[0]-'0';
@@ -336,11 +336,11 @@ class Rcube
 				
                 (inv==false) ? this.doit(this.MoveMap[tt]) : this.doit(this.InvMoveMap[tt]);
             }
-            this.states.push(this.b_to_string());   // push state after move
+            this.states.push(this.saveCubeStateToString());   // push state after move
             //this.disp();
         }
     }    
-    b_to_string()
+    saveCubeStateToString()
     {
         let s="";
         for(let i=0;i<6;i++)
@@ -349,7 +349,7 @@ class Rcube
                    s += this.rubiksCube[i][j][k];
         return s;
     }
-    string_to_b(s)
+    loadCubeStateFromString(s)
     {
         let p=0;
         for(let i=0;i<6;i++)
@@ -357,20 +357,20 @@ class Rcube
                 for(let k=0;k<3;k++)
                    this.rubiksCube[i][j][k] = s[p++];
         this.disp();
-    }
+    } 
 
     look(i)
     {
         switch(i)
         {
-            case this.left   : console.log("d U'");   this.parse("d U'");   break;
+            case this.left   : this.parse("d U'");   break;
             case this.front  : break;
-            case this.right  :  console.log("d' U"); this.parse("d' U");   break;
-            case this.back   : console.log("2d' 2U"); this.parse("2d' 2U"); break;
-            case this.top    : console.log("l R'"); this.parse("l R'");   break;
-            case this.down   : console.log("l' R"); this.parse("l' R");   break;
-            case this.ck     : console.log("f B'"); this.parse("f B'");   break;  // rotate front face Clockwise(whole cube)
-            case this.ack    : console.log("f' B"); this.parse("f' B");   break;  // rotate front face Anti-Clockwise(whole cube)
+            case this.right  : this.parse("d' U");   break;
+            case this.back   : this.parse("2d' 2U"); break;
+            case this.top    : this.parse("l R'");   break;
+            case this.down   : this.parse("l' R");   break;
+            case this.ck     : this.parse("f B'");   break;  // rotate front face Clockwise(whole cube)
+            case this.ack    : this.parse("f' B");   break;  // rotate front face Anti-Clockwise(whole cube)
         }
     }
        
@@ -397,9 +397,9 @@ class Rcube
 	
 	is_equal_color(p,color)	{	return this.rubiksCube[p.i][p.j][p.k] == color;	}
 	// not used
-	E3Map(i)    {	return i<12 ? i+12 : i-12 ;    }
+	EdgeMap(i)    {	return i<12 ? i+12 : i-12 ;    }
     
-	C3Map(i)
+	CornerMap(i)
     {
 		let A=[];
 		if(i<8)	A.push(i+8) , A.push(i+16);
@@ -407,41 +407,41 @@ class Rcube
 		else A.push(i-8) , A.push(i-16);
         return A;
     }
-    E3Index(ob)
+    EdgeIndex(ob)
     {
-        for(let i=0;i<this.E3Arr.length;i++)
-            if(ob.i == this.E3Arr[i].i && ob.j == this.E3Arr[i].j && ob.k == this.E3Arr[i].k)
+        for(let i=0;i<this.EdgePieceArr.length;i++)
+            if(ob.i == this.EdgePieceArr[i].i && ob.j == this.EdgePieceArr[i].j && ob.k == this.EdgePieceArr[i].k)
               return i;
         return -1;
     }
-	C3Index(ob)
+	CornerIndex(ob)
     {
-        for(let i=0;i<this.C3Arr.length;i++)
-            if(ob.i == this.C3Arr[i].i && ob.j == this.C3Arr[i].j && ob.k == this.C3Arr[i].k)
+        for(let i=0;i<this.CornerPieceArr.length;i++)
+            if(ob.i == this.CornerPieceArr[i].i && ob.j == this.CornerPieceArr[i].j && ob.k == this.CornerPieceArr[i].k)
               return i;
         return -1;
     }
     other_edge_face(x,y,z)
     {
-        let obj = {i:x , j:y , k:z};    let ind = this.E3Index(obj);    let map = this.E3Map(ind);
-        return this.E3Arr[map];
+        let obj = {i:x , j:y , k:z};    let ind = this.EdgeIndex(obj);    let map = this.EdgeMap(ind);
+        return this.EdgePieceArr[map];
     }
 	other_corner_faces(x,y,z)
     {
-        let obj = {i:x , j:y , k:z};    let ind = this.C3Index(obj);    let maps = this.C3Map(ind);	
-		let ret = [	this.C3Arr[maps[0]] , this.C3Arr[maps[1]] ]; 
+        let obj = {i:x , j:y , k:z};    let ind = this.CornerIndex(obj);    let maps = this.CornerMap(ind);	
+		let ret = [	this.CornerPieceArr[maps[0]] , this.CornerPieceArr[maps[1]] ]; 
         return ret;
     }	
     search_edge_color(color)// search edge array for color. only works 4 times ,becoz there are only 4 edges for each color 
     {   
-        let E = this.E3Arr,i,j,k,y,o,other_color;
+        let E = this.EdgePieceArr,i,j,k,y,o,other_color;
         for(let x=0;x<E.length;x++) 
         {
-            y = this.E3Map(x);
+            y = this.EdgeMap(x);
             o = E[y];
             other_color = this.rubiksCube[o.i][o.j][o.k];
             if(this.is_equal_color(E[x],color) && !this.savedEdgeArr[other_color])
-            {    this.savedEdgeArr[other_color] = 1;   return E[this.E3Map(x)];       } // return edge if found
+            {    this.savedEdgeArr[other_color] = 1;   return E[this.EdgeMap(x)];       } // return edge if found
         }
     }
 	sort_colors(Arr)
@@ -457,9 +457,9 @@ class Rcube
 	}
     search_corner_color(color)// search corner array for color. only works 4 times ,becoz there are only 4 corners for each color 
     {   
-        let C = this.C3Arr , B = this.rubiksCube,i,j,k,y,o,other_colors , Arr=[];
+        let C = this.CornerPieceArr , B = this.rubiksCube,i,j,k,y,o,other_colors , Arr=[];
         console.log("searching for a corner");
-		for(let x=0;x<8;x++)	// just search the first 8 elements in C3Arr 
+		for(let x=0;x<8;x++)	// just search the first 8 elements in CornerPieceArr 
         {
 			Arr = [C[x]];
 			//take non-white and non-yellow colors and sort them and see if they are visited or not
@@ -513,13 +513,12 @@ class Rcube
 	
     bring_free_space_below_front()
     {   // finds free space at bottom (yellow face) for forming cross in layer1 and brings it below front face, if available
-		this.move_descriptions.push()
         let i = this.down , B = this.rubiksCube , free = null;
         let a = this.other_edge_face(i,0,1), b = this.other_edge_face(i,1,0), c = this.other_edge_face(i,1,2), d = this.other_edge_face(i,2,1);
         if(B[i][0][1]!='W' && !this.is_equal_color(a,'W')){
 			free = {i:i,j:0,k:1};
 			console.log("already free down");   // no need to rotate to front
-			this.move_descriptions.push("Already there is a free space in the down face to create a cross ")
+			this.record_move("Already there is a free space in the down face to create a cross ")
 		}
         else if(B[i][1][0]!='W' && !this.is_equal_color(b,'W')) {
 
@@ -580,6 +579,7 @@ class Rcube
 				if(a > b)return 1;
 				return 0;
 			});
+			
 			console.log("centers are (not respectively matching):"+C[0]+" , "+C[1]+" , "+C[2]);
 			if(this.is_equal_color(Car[0],C[0]) && this.is_equal_color(Car[1],C[1]) )
 			{
@@ -650,23 +650,37 @@ class Rcube
 		{
 			let Car = this.search_corner_color('W');
 			console.log("corner: "+Car[0].i+","+Car[0].j+","+Car[0].k+" & "+Car[1].i+","+Car[1].j+","+Car[1].k+" & "+Car[2].i+","+Car[2].j+","+Car[2].k);
-			if( this.is_center_match(Car[0]) && this.is_center_match(Car[1]) && this.is_center_match(Car[2]) )
-			{	console.log("already this corner is in place!");	 continue;	}
+			
+			if( this.is_center_match(Car[0]) && this.is_center_match(Car[1]) && this.is_center_match(Car[2]) ) {
+				console.log("already this corner is in place!");
+				this.record_move("This corner is already in place, as its colors match with that of the face center.");
+				continue;
+			}
+			
 			let s_face = this.get_side_face(Car);
 			console.log("side face= "+s_face.i);
 			if(s_face.k == 2)
 				this.look(s_face.i);
 			else
 				this.look(s_face.i) , this.look(this.left);
-			console.log("looking at that face: where cube @ right"+s_face.i);
+
+			
+			this.record_move(`looking at that face: where cube @ right: ${s_face.i}.`);
+			console.log(`looking at that face: where cube @ right: ${s_face.i}`);
 			if(s_face.j == 0) // corner at the top row
 			{
 				console.log("@ top");
+				this.record_move("this corner is at the top row, bring it down right by doing R' D' R D.");
 				this.final_step();	console.log("R' D' R D done");	// bring it to down right
 			}
-			else	// corner at the bottom row
+			else{ // corner at the bottom row 
 				console.log("@ bottom");
+				this.record_move("this corner is at the bottom row.");
+			}
+				
 			console.log("cube at bottom right");
+			this.record_move("found a cube at bottom right.");
+			
 			let f = [{i:this.front,j:2,k:2}] , other = this.other_corner_faces(f[0].i,f[0].j,f[0].k); 
 			f.push(other[0]); f.push(other[1]);
 			f = this.sort_colors(f);
@@ -675,40 +689,52 @@ class Rcube
 			if(this.rubiksCube[f[2].i][f[2].j][f[2].k] != 'W')
 				console.log("error! the 3rd face of corner piece isn't white da!");
 			
-			if(f[2].i == this.down)
-			{	console.log("W @ down => do R' D' R D, 3 times"); this.final_step(); this.final_step(); this.final_step();	}
-			else if(f[2].i == this.right)
-			{	console.log("W @ right => do R' D' R D once"); this.final_step();	}
-			else	// front
-			{	console.log("W @ front => do D' R' D R"); this.parse("D' R' D R");	}
+			if(f[2].i == this.down) {	
+				console.log("W @ down => do R' D' R D, 3 times"); 
+				this.record_move("White face at the bottom, so do R' D' R D, 3 times.");
+				this.final_step(); this.final_step(); this.final_step();
+			} else if(f[2].i == this.right) {	
+				console.log("W @ right => do R' D' R D once");
+				this.record_move("White face is at right side, so do R' D' R D, 1 time.");
+				this.record_move("found a cube at bottom right.");
+				this.final_step();
+			} else { 	// front
+				console.log("W @ front => do D' R' D R");
+				this.record_move("White face at front, so do D' R' D R.");
+				this.parse("D' R' D R");
+			}
 			console.log("corner placed successfully");
+			this.record_move("We have placed this corner successfully.")
 		}
 	}
 	
 	layer1()
     {
 		this.reset_saved_pieces();
-	//	this.moves.push("layer1");
 		console.log("Layer1:");
 		console.log("------------------------------------------------------------");
-		// description corresponding to initial state given below:
-		this.move_descriptions.push("To solve the first layer (the yellow top), we need to first create a yellow cross. To do this, we will bring the white (opposite color of yellow) layer center at top by doing the following moves:");
+		this.record_move("To solve the first layer (the yellow top), we need to first create a yellow cross at the top, for which, we will bring the white (opposite color of yellow) layer center at top by doing the following moves:");
         
 		this.white_to_top('W');
         console.log("brought white center at top");
+		this.record_move("Now that we brought the white face to the top, lets create the white cross first, then rotate each points of the cross to the opposite face (yellow) to create yellow cross.");
 		
 		if(this.check_l1_cross()) {
 			console.log("white cross already done!");
-			this.move_descriptions.push("Now that we brought white center at top, we see that the white cross is already done.");
+			this.record_move("The white cross is already done.");
 		}
         else {
-			this.move_descriptions.push("Now that we brought white center at top, lets create a white cross first.");
 			this.white_cross(this.top);
+			this.record_move("The white cross is now done, let's check if the white corner pieces are in their place.");
 		}
-        if(this.check_corners(this.top))
+        if(this.check_corners(this.top)) {
 			console.log("white corners already done!");
-        else 
+			this.record_move("The white corner pieces are already in their place.");
+		}
+        else {
+			this.record_move("Now, lets bring the white corner pieces into their place.");
 			this.white_corners();
+		}
 		console.log("---------------------------LAYER 1 OVER------------------------------");
 	}
 	
@@ -757,6 +783,7 @@ class Rcube
 		}
 	}
 	
+	// nana
 	layer2()
 	{
 		this.reset_saved_pieces();
@@ -765,40 +792,64 @@ class Rcube
 		console.log("------------------------------------------------------------");
         this.parse("2r 2L'");
         console.log("turn white face down => 2r 2L'");
-		let i = this.count_middle_matching_edges();
-		let e,top_color,oppa_top_color;
-		console.log("already, there are "+i+" matching edges");
-		for(;i<4;)
+		this.record_move("Let's bring the solved layer to the bottom.");
+		
+		let solvedEdges = this.count_middle_matching_edges();
+		let topFaceColorEdges,top_color,oppa_top_color;
+		console.log(`There are ${solvedEdges} matching edges already.`);
+		this.record_move(`There are ${solvedEdges} matching edges already.`);
+		this.record_move("Let's search unsolved edges at the top layer. The candidates are those edges that are of a color other than the top layer. Once we find such a candidate edge we rotate the top layer and bring it to match its front face color with the face's center.");
+
+		const bringNonYellowEdgeFromMiddleLayerToTop = "L' U' L U F U F'";
+		
+		for(;solvedEdges<4;)
 		{
 			console.log("search top");
-			e = this.search_top_non_yellow_edges();
-			if(!e)
+			this.record_move("Searching for non-yellow edges at the top layer.");
+			topFaceColorEdges = this.search_top_non_yellow_edges();
+			if(!topFaceColorEdges)
 			{
-				console.log("no non-yellow edges @ top so do:");
-				for(let j=0;j<4;j++)
+				console.log("No non-yellow edges @ top so do:");
+				this.record_move("There aren't any non-yellow edges at the top face. So we bring an unsolved edge from the middle layer to the top layer, and then place it in its correct position in the middle layer.");
+				
+				for(let j=0;j<4;j++) {
 					if(this.is_center_match({i:this.front,j:1,k:0}) && this.is_center_match({i:this.left,j:1,k:2}))
 						this.look(this.right);
 					else
 						break;
-				this.parse("L' U' L U F U F'");
-				console.log("L' U' L U F U F'");
-				continue;	// 'i' isn't incremented here
+				}
+				
+				console.log(bringNonYellowEdgeFromMiddleLayerToTop);
+				this.record_move(`Found an unsolved edge in the middle layer, let's bring it to the top layer by doing: ${bringNonYellowEdgeFromMiddleLayerToTop}`);
+				this.parse(bringNonYellowEdgeFromMiddleLayerToTop);
+				continue;	// 'solvedEdges' isn't incremented here, as we haven't placed that edge in correct position in middle layer yet.
 			}
-			console.log("found a non-yellow edge: "+e.i+","+e.j+","+e.k);
-			this.look(e.i);
-			for(let j=0;j<4;j++)
+			
+			console.log("found a non-yellow edge: "+topFaceColorEdges.i+","+topFaceColorEdges.j+","+topFaceColorEdges.k);
+			this.record_move("We found a non-yellow edge, Let's get it to match the color with that of its face.");
+			this.look(topFaceColorEdges.i);
+			for(let j=0;j<4;j++) {
 				if(this.is_center_match({i:this.front,j:0,k:1}))
 					break;
-				else
-					console.log("d") , this.parse("d");
+				else {
+					console.log("d");
+					this.parse("d");
+				}
+			}
 			console.log("matched with center");
 			top_color = this.rubiksCube[this.top][2][1];
 			oppa_top_color = this.opp_color(top_color);
-			if(this.rubiksCube[this.right][1][1] == oppa_top_color)
-				console.log("U' L' U L U F U' F'"),	this.parse("U' L' U L U F U' F'");
-			else
-				console.log("U R U' R' U' F' U F"), this.parse("U R U' R' U' F' U F");
-			i++;
+			let bringEdgeToPositionMove = ""
+			if(this.rubiksCube[this.right][1][1] === oppa_top_color) {
+				bringEdgeToPositionMove = "U' L' U L U F U' F'";	
+			}
+			else {
+				bringEdgeToPositionMove = "U R U' R' U' F' U F";
+			}
+			console.log(bringEdgeToPositionMove);
+			this.record_move(`Now that we have matched with the top edge with its corresponding face, let's place this edge piece from the top layer to the middle layer by doing: ${bringEdgeToPositionMove}`);
+			this.parse(bringEdgeToPositionMove);
+			solvedEdges++;
 		}
 		console.log("---------------------------LAYER 2 OVER------------------------------");
 	}
@@ -980,22 +1031,36 @@ class Rcube
 		return [numMoves, moveType, direction];
 	}
 
+	record_move(str="") {
+		const ind = Math.max(this.solution_moves_list[this.solution_layer]?.length,0);
+		const log = {index: ind,str:str};
+		this.move_descriptions[this.solution_layer].push(log);
+	}
+
 	solve3x3()
 	{
         this.moves = [];	// empty moves array before solving
         this.moves.push("initial");
         this.states = [];
         
-        this.states.push(this.b_to_string());   // push initial state
+        this.states.push(this.saveCubeStateToString());   // push initial state
+		
 		this.solution_moves_list = new Array(3);
-        for(let i=0;i<3;i++)
-            this.solution_moves_list[i] = new Array();
+		this.move_descriptions = new Array(3);
+        for(let i=0;i<3;i++) {
+			this.solution_moves_list[i] = new Array();
+            this.move_descriptions[i] = new Array();
+		}
+		this.record_move("This solution solves the Rubik's 3x3 cube layer by layer. We will begin by solving the top layer first. Let's solve the white face layer first, then the middle layer, and finally the Yellow layer at last.");
+		
         this.store = 1;
-        this.mlk = 0;   // store all moves of 1st layer in index 0;
+        this.solution_layer = 0;   // store all moves of 1st layer in index 0;
         this.layer1();
-        this.mlk = 1;   // store all moves of 2nd layer in index 1;
+		this.record_move("Now we have solved the first layer.");
+        this.solution_layer = 1;   // store all moves of 2nd layer in index 1;
 		this.layer2();
-        this.mlk = 2;   // store all moves of 3rd layer in index 2;
+		this.record_move("Now we have solved the second layer.");
+        this.solution_layer = 2;   // store all moves of 3rd layer in index 2;
 		this.layer3();
 		
         console.log(this.solution_moves_list[0].toString());
@@ -1023,7 +1088,7 @@ class Rcube
 		return { n : 1, s : sym };
 	}
 
-	foo(sym,num,moves2)
+	saveEquivalentMove(sym,num,moves2)
 	{
 		switch(num % 4)
 		{
@@ -1046,19 +1111,19 @@ class Rcube
 		{
 			mv1 = this.getnum(moves[i]); num = mv1.n;	sym = mv1.s;
 			//console.log("num="+num+" sym="+sym+" i="+i);
-			for(j=i+1,k=0;j < moves.length;j++,k++)
-			{
-				mv2 = this.getnum(moves[j]);
-				//console.log("mv2.n="+mv2.n+" mv2.s="+mv2.s+" j="+j);
-				if(mv2.s == sym )
-					num += mv2.n;	
-				else if(mv2.s == this.InvMove[this.InvMoveMap[sym]])
-					num -= mv2.n;
-				else
-					break;
-			}
-			this.foo(sym,num,moves2);
-			i += k;
+			// for(j=i+1,k=0;j < moves.length;j++,k++)
+			// {
+			// 	mv2 = this.getnum(moves[j]);
+			// 	//console.log("mv2.n="+mv2.n+" mv2.s="+mv2.s+" j="+j);
+			// 	if(mv2.s == sym )
+			// 		num += mv2.n;	
+			// 	else if(mv2.s == this.InvMove[this.InvMoveMap[sym]])
+			// 		num -= mv2.n;
+			// 	else
+			// 		break;
+			// }
+			this.saveEquivalentMove(sym,num,moves2);
+			// i += k;
 		}
         return moves2;
 	}

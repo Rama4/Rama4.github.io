@@ -142,8 +142,21 @@
 		$("#scramble").click(function()
 		{
 			RUBIK.scramble();    
-		});
+		});		
 
+		const show_solution_description = function() {
+			console.log("show_solution_description()");
+			let j = RUBIK.move_descriptions[k]?.findLastIndex((element) => element.index <= ind);
+			const jind = RUBIK.move_descriptions[k][j]?.index;
+			console.log("k=",k,"ind=",ind,"jind=",jind);
+			let movMsgStr = "";
+			if(jind != undefined){
+				for(;j>=0 && RUBIK.move_descriptions[k][j]?.index === jind;j--){
+					movMsgStr = `${RUBIK.move_descriptions[k][j].str} ${movMsgStr}`;
+				}
+			}
+			$("#solution-guide-description").html(movMsgStr);
+		}
 		
 		var a_color = "orange";
 		var na_color = "white";
@@ -156,19 +169,17 @@
 			Gcube.keyboardControlsEnabled = false;	
 			
 			RUBIK.solve3x3();
-			const md = RUBIK.move_descriptions;
-			console.log("nana");
-			console.log(md);
+			
 			
 			noturn = 0;
-			RUBIK.string_to_b(RUBIK.states[0]);
+			RUBIK.loadCubeStateFromString(RUBIK.states[0]);
 			var innerHTML  = "";
-            for(var k=0;k<3;k++)
+            for(let layer=0;layer<3;layer++)
             {
-                innerHTML += '<h4><strong>layer '+(k+1)+'</strong></h4>';
-                for(var i=0;i<RUBIK.solution_moves_list[k].length;i++)
+                innerHTML += '<h4><strong>layer '+(layer+1)+'</strong></h4>';
+                for(var i=0;i<RUBIK.solution_moves_list[layer].length;i++)
                 {
-                    innerHTML += '<span id=\'move'+k+i+'\'>'+RUBIK.solution_moves_list[k][i]+'</span> ';
+                    innerHTML += '<span id=\'move'+layer+i+'\'>'+RUBIK.solution_moves_list[layer][i]+'</span> ';
                 }
                 innerHTML += '<br>';
             }
@@ -178,9 +189,6 @@
 			innerHTML += "</div>";
 			$('#solution-box').html(innerHTML);
 
-			
-			
-			
 			$("#move00").css("color",a_color);
 			
             $('#solution-box').show(1000);
@@ -195,16 +203,15 @@
 			
 			
 			$('#solution-guide').html(solutionHTML);
-			move_description_index = 0;
-			$("#solution-guide-description").html(md[move_description_index] ?? "");
+			console.log(RUBIK.move_descriptions);
+			show_solution_description();
+			
 			
             $('#prev').click(function()
 			{
 				ele = '#move'+k+ind;
 				$(ele).css("background","rgba(255,0,0,0.15)");  
 				$(ele).css("color",na_color);
-				move_description_index = Math.max(0,move_description_index-1);
-				$("#solution-guide-description").html(md[move_description_index] ?? "");
 
 				if(ind > 0)
 				{	
@@ -220,7 +227,7 @@
                 }
 				ele = "#move"+k+ind;
 				$(ele).css("color",a_color);
-				
+				show_solution_description();
 			
 			});
 			$('#next').click(function()
@@ -228,8 +235,6 @@
 				ele = '#move'+k+ind;
 				$(ele).css("background","rgba(255,0,0,0.15)");  
 				$(ele).css("color",na_color);
-				move_description_index = Math.min(md.length, move_description_index+1);
-				$("#solution-guide-description").html(md[move_description_index] ?? "");
 
 				if(RUBIK.solution_moves_list[k].length > 1 && ind < RUBIK.solution_moves_list[k].length-1)				
 				{
@@ -245,6 +250,8 @@
                 }
 				ele = "#move"+k+ind;
 				$(ele).css("color",a_color);
+				show_solution_description();
+
 			});
 			var activeItem = null;
 			$("#solution-box>span").hover(
