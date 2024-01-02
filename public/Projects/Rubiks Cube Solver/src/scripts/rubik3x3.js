@@ -292,8 +292,6 @@ class Rcube
         }
     }
  
-    time_delay()  {   for(let time=200000000;time>0;time--);    }
-
 	get_move_description(num, inv, moveType) {
 		// console.log("num=",num, ",inv=",inv,",moveType=",moveType);
 		const retstr = `Rotate ${moveType} ${!inv?"clockwise":"anticlockwise"} ${num} times`;
@@ -783,22 +781,22 @@ class Rcube
 		}
 	}
 	
-	// nana
 	layer2()
 	{
 		this.reset_saved_pieces();
 		//this.moves.push("layer2");
 		console.log("Layer2:");
 		console.log("------------------------------------------------------------");
-        this.parse("2r 2L'");
         console.log("turn white face down => 2r 2L'");
 		this.record_move("Let's bring the solved layer to the bottom.");
+        this.parse("2r 2L'");
 		
 		let solvedEdges = this.count_middle_matching_edges();
 		let topFaceColorEdges,top_color,oppa_top_color;
 		console.log(`There are ${solvedEdges} matching edges already.`);
-		this.record_move(`There are ${solvedEdges} matching edges already.`);
-		this.record_move("Let's search unsolved edges at the top layer. The candidates are those edges that are of a color other than the top layer. Once we find such a candidate edge we rotate the top layer and bring it to match its front face color with the face's center.");
+		this.record_move(`There are ${solvedEdges} edges already in place in the middle layer.`);
+		
+		this.record_move("Let's search for the unsolved edges at the top layer. The candidates are those edges that are of a color other than the top layer. Once we find such a candidate edge we rotate to align its front face color with the face's center.");
 
 		const bringNonYellowEdgeFromMiddleLayerToTop = "L' U' L U F U F'";
 		
@@ -810,7 +808,7 @@ class Rcube
 			if(!topFaceColorEdges)
 			{
 				console.log("No non-yellow edges @ top so do:");
-				this.record_move("There aren't any non-yellow edges at the top face. So we bring an unsolved edge from the middle layer to the top layer, and then place it in its correct position in the middle layer.");
+				this.record_move("There aren't any non-yellow edges at the top face, so we bring an unsolved edge from the middle layer to the top layer, and then place it in its correct position in the middle layer.");
 				
 				for(let j=0;j<4;j++) {
 					if(this.is_center_match({i:this.front,j:1,k:0}) && this.is_center_match({i:this.left,j:1,k:2}))
@@ -826,7 +824,7 @@ class Rcube
 			}
 			
 			console.log("found a non-yellow edge: "+topFaceColorEdges.i+","+topFaceColorEdges.j+","+topFaceColorEdges.k);
-			this.record_move("We found a non-yellow edge, Let's get it to match the color with that of its face.");
+			this.record_move("We found a non-yellow edge, Let's get it to align with its face.");
 			this.look(topFaceColorEdges.i);
 			for(let j=0;j<4;j++) {
 				if(this.is_center_match({i:this.front,j:0,k:1}))
@@ -837,6 +835,7 @@ class Rcube
 				}
 			}
 			console.log("matched with center");
+			
 			top_color = this.rubiksCube[this.top][2][1];
 			oppa_top_color = this.opp_color(top_color);
 			let bringEdgeToPositionMove = ""
@@ -847,9 +846,11 @@ class Rcube
 				bringEdgeToPositionMove = "U R U' R' U' F' U F";
 			}
 			console.log(bringEdgeToPositionMove);
-			this.record_move(`Now that we have matched with the top edge with its corresponding face, let's place this edge piece from the top layer to the middle layer by doing: ${bringEdgeToPositionMove}`);
+			this.record_move(`Now that we have aligned the top edge with its corresponding face, let's place this edge piece from the top layer to the middle layer by doing: ${bringEdgeToPositionMove}`);
 			this.parse(bringEdgeToPositionMove);
+			
 			solvedEdges++;
+		
 		}
 		console.log("---------------------------LAYER 2 OVER------------------------------");
 	}
@@ -901,92 +902,146 @@ class Rcube
 		return (this.rubiksCube[this.top][0][1] == 'Y'&&this.rubiksCube[this.top][1][0] == 'Y'&&this.rubiksCube[this.top][1][2] == 'Y'&&this.rubiksCube[this.top][2][1] == 'Y');
 	}
 	
-	
+	// nana
 	layer3()
 	{
 		this.reset_saved_pieces();
-		//this.moves.push("layer3");
+		
 		console.log("Layer3:");
 		console.log("------------------------------------------------------------");
-        if(this.rubiksCube[this.down][1][1]!='W')
-			this.white_to_top('Y');
+		this.record_move("To solve the final layer (top layer), we first create a cross, where in each top layer edge aligns with its face.")
 		
-		let n = this.search_top_yellow_edges() , i , k;
-		if(n == 0)	// dot
-			console.log("F R U R' U' F' f R U R' U' f'") , this.parse("F R U R' U' F' f R U R' U' f'");
-		else if(n == 2)// inverted L
-			console.log("F U R U' R' F'") , this.final_layer1A();
-		else if(n == 3) // horizontal Y
-			console.log("F R U R' U' F'") , this.final_layer1();
-		// if n == 4 no need to do above step
+        if(this.rubiksCube[this.down][1][1]!='W') {
+			this.record_move("We are bringing the white face to the top.");
+			this.white_to_top('Y');
+		}
+		
+		this.record_move("We first count the number of top layer edges that are the same color as the top layer (yellow). They need not be in their proper place yet.")
+		let topYellowEdges = this.search_top_yellow_edges() , i , k;
+
+		let movesToCreateCross = "";
+		if(topYellowEdges == 0) {	// dot
+			movesToCreateCross = "F R U R' U' F' f R U R' U' f'";
+			this.record_move(`There are no edges that are properly aligned with their faces, let's form the cross by doing: ${movesToCreateCross}`)
+			console.log(movesToCreateCross);
+			this.parse(movesToCreateCross);
+		} else if(topYellowEdges == 2) {// inverted L
+			movesToCreateCross = "F U R U' R' F'";
+			this.record_move(`The two edges that align with their faces form a mirrored "L" shape. let's form the cross by doing: ${movesToCreateCross}`)
+			console.log(movesToCreateCross);
+			this.parse(movesToCreateCross);
+		} else if(topYellowEdges == 3) {// horizontal Y
+			movesToCreateCross = "F R U R' U' F'";
+			this.record_move(`The three edges that align with their faces form a horizontal "T" shape. let's form the cross by doing: ${movesToCreateCross}`)
+			console.log(movesToCreateCross);
+			this.parse(movesToCreateCross);
+		}
+		else { // if topYellowEdges == 4 no need to do above step
+			this.record_move(`The cross is already present with all 4 edges having yellow top color.`);
+		}
+		this.record_move("The yellow cross now has some edges that align with their face while others don't. Let's align the edges properly with their faces. To do so, lets first count how many edges are already aligning by rotating the top.");
 		
 		k=0;
+		let alignedEdges=0;
+
 		for(;k<4;k++)
 		{
-			n=0;
+			alignedEdges=0;
 			for(let i=this.left;i<=this.back;i++)
 				if(this.rubiksCube[i][0][1] == this.rubiksCube[i][1][1])
-					n++;
-			if(n>=2)
+					alignedEdges++;
+			if(alignedEdges>=2)
 				break;
-			console.log("U") , this.parse("U");
+		
+			console.log("U");
+			this.parse("U");
 		}
 		if(k==4)
 		{
-			console.log("n<2 error");
+			console.log("alignedEdges<2 error");
 		}
 		console.log("there are now >= 2 matching edges @ top");
-		if(n<4)
+		this.record_move("There are more than 2 edges aligned properly.");
+		console.log("alignedEdges=",alignedEdges);
+
+		let movesToAlignEdges = "";
+
+		if(alignedEdges<4)
 			for(i=0;i<4;i++)
 			{
 				if( this.is_center_match({i:this.left,j:0,k:1}) && this.is_center_match({i:this.right,j:0,k:1}) )	// horizontal
-				{console.log("horizontal match, do R U R' U R 2U R' 2U u D' R U R' U R 2U R' U"); this.final_layer2A(); break;}
+				{
+					movesToAlignEdges = "R U R' U R 2U R' 2U u D' R U R' U R 2U R' U";
+					console.log("horizontal match, do ",movesToAlignEdges);
+					this.record_move(`The edges align horizontally. let's align the remaining edges by doing: ${movesToAlignEdges}`)
+					this.parse(movesToAlignEdges);
+					break;
+				}
 				
 				if( this.is_center_match({i:this.back,j:0,k:1}) && this.is_center_match({i:this.right,j:0,k:1}) )	// right and back	
-				{console.log("back and right match, do R U R' U R 2U R' U"); this.final_layer2(); break;}
+				{
+					movesToAlignEdges = "R U R' U R 2U R' U";
+					console.log("back and right match, do",movesToAlignEdges);
+					this.record_move(`The back and right edges align properly. let's align the remaining edges by doing: ${movesToAlignEdges}`)
+					this.parse(movesToAlignEdges);
+					break;
+				}
+				
 				this.look(this.right); //  no shape found => look right
+				console.log("no matching shape found, looking right");
+				
 			}
-		// if n == 4 => no need of above steps		
-		console.log("edges matching now");		
+		// if alignedEdges == 4 => no need of above steps		
+		console.log("edges matching now");
+		this.record_move("The yellow cross is now formed. Now, let's bring the corners into their correct position (they need not align their colors with their faces yet). First, let's find the corners that are already in their correct position.");
+		
 		k=0;
-		let cornerArr,fac,o;
+		let properCornersArr,fac,o;
 		let num=0;
+		const ProperCornerSearchRetryMove = "U R U' L' U R' U' L";
 		while(true)
 		{
-			cornerArr = this.search_corner_proper_place();
-			if(cornerArr.length == 0)
+			properCornersArr = this.search_corner_proper_place();
+			if(properCornersArr.length == 0)
 			{
-				console.log("no proper corner found so do U R U' L' U R' U' L and try again");
-				this.final_layer3();
+				console.log(`no proper corner found so do ${ProperCornerSearchRetryMove} and try again`);
+				this.record_move(`No proper corner found so do ${ProperCornerSearchRetryMove} and try again.`);
+				this.parse(ProperCornerSearchRetryMove);
 				continue;
 			}
+			
 			console.log("corner found");
-			console.log("corner1= "+cornerArr[0][0].i+" , "+cornerArr[0][0].j+" , "+cornerArr[0][0].k);
-			if(cornerArr.length == 4)
+			this.record_move(`Found a proper corner.`);
+			console.log("corner1= "+properCornersArr[0][0].i+" , "+properCornersArr[0][0].j+" , "+properCornersArr[0][0].k);
+			
+			if(properCornersArr.length == 4)
 			{
 				console.log("all corner in proper position");
 				break;
 			}
-			else if(cornerArr.length == 1 || (cornerArr.length == 2 ))
+			
+			else if(properCornersArr.length == 1 || (properCornersArr.length == 2 ))
 			{
-				o = this.other_corner_faces(cornerArr[0][0].i,cornerArr[0][0].j,cornerArr[0][0].k);
+				this.record_move(`There are 2 proper corners. Now let's place the other corners in the correct position by bringing them to the top right corner of the front face.`);
+				o = this.other_corner_faces(properCornersArr[0][0].i,properCornersArr[0][0].j,properCornersArr[0][0].k);
 					
-				if(cornerArr[0][0].i == this.top)
+				if(properCornersArr[0][0].i == this.top)
 				{
 					(o[0].k == 0) ? this.look(o[1].i) :  this.look(o[0].i);
 				}
 				else
 				{
-					if(cornerArr[0][0].k == 2)
-						this.look(cornerArr[0][0].i);
+					if(properCornersArr[0][0].k == 2)
+						this.look(properCornersArr[0][0].i);
 					else if(o[0].i != this.top && o[0].k == 2)
 						this.look(o[0].i);
 					else
 						this.look(o[1].i);
-					//(cornerArr[0][0].k == 2) ? this.look(o[1].i) :  this.look(o[0].i);
+					//(properCornersArr[0][0].k == 2) ? this.look(o[1].i) :  this.look(o[0].i);
 				}
-				console.log("corner at top right now => do U R U' L' U R' U' L");
-				this.final_layer3();
+				console.log(`corner at top right now => do ${ProperCornerSearchRetryMove}`);
+				this.record_move(`The corner at top right now, so do ${ProperCornerSearchRetryMove}`);
+				this.parse(ProperCornerSearchRetryMove);
 			}
 			else
 			{
@@ -999,17 +1054,28 @@ class Rcube
 			}
 		}
 		console.log("corners in are position! Now, for the final step");
-		if(this.check_corners(this.top))
+		this.record_move("The corners in are position now. For the final step, let's align them properly with their faces.")
+		
+		if(this.check_corners(this.top)) {
 			console.log("corners already done!");
+			this.record_move("The corners are already aligned. So there is nothing to be done.")
+		}
         else
 		{		
+			const FinalStepMove = "R' D' R D";
 			num=0;
 			for(let i=0;i<4;i++)
 			{	
 				num=0;
-				while(this.rubiksCube[this.top][2][2] != 'Y' && num++ <6)
-					console.log("R' D' R D") ,this.final_step();
-				console.log("U");	this.parse("U");
+				this.record_move(`Fix this top-right corner by doing ${FinalStepMove} repeatedly until the corner aligns with its faces.`);
+				
+				while(this.rubiksCube[this.top][2][2] != 'Y' && num++ <6) {
+					console.log(FinalStepMove);
+					this.parse(FinalStepMove);
+				}
+				console.log("U");
+				this.record_move("This corner is fixed, rotate the top and fix the top-right corner if not aligned.");
+				this.parse("U");
 			}
 		}
 		console.log("---------------------------LAYER 3 OVER------------------------------");	
@@ -1062,6 +1128,7 @@ class Rcube
 		this.record_move("Now we have solved the second layer.");
         this.solution_layer = 2;   // store all moves of 3rd layer in index 2;
 		this.layer3();
+		this.record_move("Hurray! we solved the Rubik's 3x3 cube!");
 		
         console.log(this.solution_moves_list[0].toString());
         console.log(this.solution_moves_list[1].toString());
