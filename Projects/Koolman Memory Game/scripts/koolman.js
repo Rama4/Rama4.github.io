@@ -229,7 +229,6 @@ animate();
 console.log(points);
  
 $("#show").click(function(){
-    // nana
     load_game_1();
 
 	// showCircle(circles["red"]);

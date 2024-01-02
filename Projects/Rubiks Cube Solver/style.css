@@ -74,6 +74,17 @@ top:60px;
 padding:10px;
 }
 
+#solution-guide{
+color:#f8f8f8;
+background : rgba(255,0,0,0.15);
+font-size: 17px;
+width:30%;
+position:fixed;
+right:50px;
+top:60px;
+padding:10px;
+}
+
 .buttons{
     position: relative;
     width:350px;
@@ -105,12 +116,13 @@ padding:10px;
 		right:auto!important;
 		width:100%!important;
 	}
-	#solution-box{
+	#solution-box, #solution-guide{
 		position:relative;
 		top:auto;
 		left:auto;
 		width:100%;
 	}
+
   .buttons{
     position: relative;
     margin:0;
