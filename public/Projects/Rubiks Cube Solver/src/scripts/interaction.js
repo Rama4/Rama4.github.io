@@ -391,9 +391,9 @@ ERNO.Interaction = (function(){
 				//	then it doesn't really count as a move, and we don't need to add it to the history		
 				var deg = targetAngle.radiansToDegrees();
 				cube.twist( new ERNO.Twist( command, deg ));
-				noturn=1;
-					RUBIK.parse(get_moves(command,deg));
-				noturn=0;
+				window.noturn=1;
+					window.RUBIK.parse(get_moves(command,deg));
+				window.noturn=0;
 
 
 				// Delete the reference to our slice

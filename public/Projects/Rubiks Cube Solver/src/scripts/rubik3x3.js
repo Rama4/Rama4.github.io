@@ -8,7 +8,6 @@ class Rcube
 	
     constructor(cube)
     {
-		Gcube = cube;
 		let i,j;
         let store=0;
         let MoveMap=[],InvMoveMap=[],EdgePieceArr=[],CornerPieceArr=[],savedEdgeArr=[],savedCornerArr=[];      
@@ -253,24 +252,24 @@ class Rcube
     {
         switch(i)
         {
-            case 0:  {   this.dow(2);     this.rot(this.right,true);   if(!noturn)Gcube.twist('r');	break; } //R'
-            case 1:  {   this.up(2);      this.rot(this.right);        if(!noturn)Gcube.twist('R');	break; } //R
-            case 2:  {   this.up(0);      this.rot(this.left,true);    if(!noturn)Gcube.twist('l');	break; } //L'
-            case 3:  {   this.dow(0);     this.rot(this.left);         if(!noturn)Gcube.twist('L');	break; } //L
-            case 4:  {   this.rgt(0);     this.rot(this.top,true);     if(!noturn)Gcube.twist('u');	break; } //U'
-            case 5:  {   this.lft(0);     this.rot(this.top);          if(!noturn)Gcube.twist('U');	break; } //U
-            case 6:  {   this.lft(2);     this.rot(this.down,true);    if(!noturn)Gcube.twist('d');	break; } //D'
-            case 7:  {   this.rgt(2);     this.rot(this.down);         if(!noturn)Gcube.twist('D');	break; } //D
-            case 8:  {   this.aclk(0);    this.rot(this.front,true);   if(!noturn)Gcube.twist('f');	break; } //F'
-            case 9:  {   this.clk(0);     this.rot(this.front);        if(!noturn)Gcube.twist('F');	break; } //F
-            case 10: {   this.clk(2);     this.rot(this.back,true);    if(!noturn)Gcube.twist('b');	break; } //B'
-            case 11: {   this.aclk(2);    this.rot(this.back);         if(!noturn)Gcube.twist('B');	break; } //B
-            case 12: {   this.up(1);	  if(!noturn)Gcube.twist('m');	break; } //M'
-            case 13: {   this.dow(1);	  if(!noturn)Gcube.twist('M');	break; } //M
-          	case 14: {   this.lft(1);	  if(!noturn)Gcube.twist('E');	break; } //E'	// chrome cube labs have confused E for E'
-            case 15: {   this.rgt(1);	  if(!noturn)Gcube.twist('e');	break; } //E
-            case 16: {   this.aclk(1);	  if(!noturn)Gcube.twist('s');	break; } //S'
-            case 17: {   this.clk(1);	  if(!noturn)Gcube.twist('S');	break; } //S
+            case 0:  {   this.dow(2);     this.rot(this.right,true);   if(!window.noturn)window.cube.twist('r');	break; } //R'
+            case 1:  {   this.up(2);      this.rot(this.right);        if(!window.noturn)window.cube.twist('R');	break; } //R
+            case 2:  {   this.up(0);      this.rot(this.left,true);    if(!window.noturn)window.cube.twist('l');	break; } //L'
+            case 3:  {   this.dow(0);     this.rot(this.left);         if(!window.noturn)window.cube.twist('L');	break; } //L
+            case 4:  {   this.rgt(0);     this.rot(this.top,true);     if(!window.noturn)window.cube.twist('u');	break; } //U'
+            case 5:  {   this.lft(0);     this.rot(this.top);          if(!window.noturn)window.cube.twist('U');	break; } //U
+            case 6:  {   this.lft(2);     this.rot(this.down,true);    if(!window.noturn)window.cube.twist('d');	break; } //D'
+            case 7:  {   this.rgt(2);     this.rot(this.down);         if(!window.noturn)window.cube.twist('D');	break; } //D
+            case 8:  {   this.aclk(0);    this.rot(this.front,true);   if(!window.noturn)window.cube.twist('f');	break; } //F'
+            case 9:  {   this.clk(0);     this.rot(this.front);        if(!window.noturn)window.cube.twist('F');	break; } //F
+            case 10: {   this.clk(2);     this.rot(this.back,true);    if(!window.noturn)window.cube.twist('b');	break; } //B'
+            case 11: {   this.aclk(2);    this.rot(this.back);         if(!window.noturn)window.cube.twist('B');	break; } //B
+            case 12: {   this.up(1);	  if(!window.noturn)window.cube.twist('m');	break; } //M'
+            case 13: {   this.dow(1);	  if(!window.noturn)window.cube.twist('M');	break; } //M
+          	case 14: {   this.lft(1);	  if(!window.noturn)window.cube.twist('E');	break; } //E'	// chrome cube labs have confused E for E'
+            case 15: {   this.rgt(1);	  if(!window.noturn)window.cube.twist('e');	break; } //E
+            case 16: {   this.aclk(1);	  if(!window.noturn)window.cube.twist('s');	break; } //S'
+            case 17: {   this.clk(1);	  if(!window.noturn)window.cube.twist('S');	break; } //S
 			case 18: {   this.doit(0);    this.doit(13);   break; }    //r'
 			case 19: {   this.doit(1);    this.doit(12);   break; }    //r
             case 20: {   this.doit(2);    this.doit(12);   break; }    //l'
@@ -1102,7 +1101,7 @@ class Rcube
 		this.move_descriptions[this.solution_layer].push(log);
 	}
 
-	solve3x3()
+	solve()
 	{
         this.moves = [];	// empty moves array before solving
         this.moves.push("initial");
