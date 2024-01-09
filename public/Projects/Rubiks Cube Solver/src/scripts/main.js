@@ -172,8 +172,6 @@ $(document).ready( function(){
 	$('#solve3x3').click(function()
 	{   
 
-		
-
 		window.noturn = 1;
 		// disable keyboard and mouse controls
 		window.cube.mouseControlsEnabled = false;
@@ -183,6 +181,11 @@ $(document).ready( function(){
 		
 		// nana
 		window.noturn = 0;
+		// Enable keyboard and mouse controls
+		window.cube.mouseControlsEnabled = true;
+		window.cube.keyboardControlsEnabled = true;
+
+
 		RUBIK.loadCubeStateFromString(RUBIK.states[0]);
 		var innerHTML  = "";
 		for(let layer=0;layer<3;layer++)

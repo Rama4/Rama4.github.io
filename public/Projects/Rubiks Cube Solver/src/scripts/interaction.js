@@ -31,27 +31,18 @@ var isUpper = function(str)
 
 var get_moves = function(command,degrees)
 {
+	const isCommandUpper = isUpper(command);
+	const commandUpperCase = command.toUpperCase();
 	if(degrees == undefined)
 	{
-		if(command=='e')
-			return "E";
-		if(command=='E')
-			return "E'";
-		return isUpper(command) ? command : command.toUpperCase() + "'";
+		return isCommandUpper ? command : commandUpperCase + "'";
 	}
 	var s="",n=degrees/90;
 	if(!n)
 		return s;
-	if(command == 'E')
-	{
-		s += Math.abs(n) + command.toUpperCase();
-		if( ( ( isUpper(command) && degrees < 0) || (!isUpper(command) && degrees > 0 ) ) == false )
-			s+="'";
-		return s;
-	}
 		
-	s += Math.abs(n) + command.toUpperCase();
-	if( ( isUpper(command) && degrees < 0) || (!isUpper(command) && degrees > 0 ) )
+	s += Math.abs(n) + commandUpperCase;
+	if( ( isCommandUpper && degrees < 0) || (!isCommandUpper && degrees > 0 ) )
 		s+="'";
 	return s;
 };	
@@ -391,8 +382,10 @@ ERNO.Interaction = (function(){
 				//	then it doesn't really count as a move, and we don't need to add it to the history		
 				var deg = targetAngle.radiansToDegrees();
 				cube.twist( new ERNO.Twist( command, deg ));
+				const rubikMove = get_moves(command,deg);
+				console.log("rubikMove=",rubikMove);
 				window.noturn=1;
-					window.RUBIK.parse(get_moves(command,deg));
+					window.RUBIK.parse(rubikMove);
 				window.noturn=0;
 
 

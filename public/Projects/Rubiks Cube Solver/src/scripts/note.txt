@@ -1,1 +1,9 @@
 change cube animation duration : cubes.js -> twistDuration
+
+
+Bug:
+if we do any of these moves: E,M,S, then the cube mapping in RUBIK class is not correct.
+while getting the white cross in the first layer, the wrong face is returned corresponding to any matched white edge.
+
+
+
