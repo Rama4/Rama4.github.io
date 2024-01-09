@@ -148,7 +148,7 @@ $(document).ready( function(){
 	
 	$("#scramble").click(function()
 	{
-		RUBIK.scramble();    
+		RUBIK.breakit();    
 	});		
 	$("#breakit").click(function()
 	{
