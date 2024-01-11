@@ -348,7 +348,34 @@ class Rcube
             this.states.push(this.saveCubeStateToString());   // push state after move
             //this.disp();
         }
-    }    
+    }
+
+	
+	parseUserMoveData(command, degrees) {
+		if(degrees === 0) {
+			return;
+		}
+		// console.log("parseUserMoveData(): command=",command,"degrees=",degrees, "noturn=",window.noturn);
+		const deg = degrees || 90;
+		const isNegativeDegrees = deg < 0;
+		const numRotations = Math.floor(Math.abs(deg) / 90);
+		const commandUpperCase = command.toUpperCase();
+		const isCommandLowerCase = command !== commandUpperCase;
+		let isOppositeTwist = isCommandLowerCase ^ isNegativeDegrees;
+		if(commandUpperCase === "E" )
+			isOppositeTwist = !isOppositeTwist;
+		const moveCmd = `${commandUpperCase}${isOppositeTwist ? "'" : ""}`;
+		// Since these actions are performed by the user (twisting window.cube), don't twist the window.cube here.
+		window.noturn=1;
+		// console.log("isNegativeDegrees=",isNegativeDegrees,"commandUpperCase=",commandUpperCase,"isCommandLowerCase=",isCommandLowerCase);
+		// console.log("moveCmd=",moveCmd,"numRotations=",numRotations,"isOppositeTwist=",isOppositeTwist);
+		for(let rotations =0; rotations < numRotations; rotations++) {
+			this.parse(moveCmd);
+		}
+		window.noturn=0;
+	}
+	
+
     saveCubeStateToString()
     {
         let s="";
