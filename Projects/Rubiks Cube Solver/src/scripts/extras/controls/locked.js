@@ -168,7 +168,8 @@ ERNO.Locked = function ( cube, camera, domElement ) {
 			// angle = Math.min( Math.PI * 0.5, Math.max( Math.PI * -0.5, angle ));
 
 			// Now that we have defined a twist, add it to the stack
-			cube.twist( new ERNO.Twist( command, angle.radiansToDegrees() ))
+			cube.twist( new ERNO.Twist( command, angle.radiansToDegrees() ));
+			RUBIK.parseUserMoveData(command,angle.radiansToDegrees());
 
 		}else{
 			
@@ -200,7 +201,8 @@ ERNO.Locked = function ( cube, camera, domElement ) {
 
 			if( command === 'y' && x - ( screen.width * pixelRatio * 0.5 ) < 0 ) command = command.toUpperCase();
 
-			cube.twist( command )
+			cube.twist( command );
+			RUBIK.parseUserMoveData(command);
 		}
 
 		group = null;

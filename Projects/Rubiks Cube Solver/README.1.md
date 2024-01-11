@@ -6,5 +6,5 @@ It provides a step-by-step solution to solve the cube. The algorithm used for so
 
 ### Getting started
 You can either:
-1. checkout the [Live Demo](https://rama-rubik.herokuapp.com/index.html) or
-2. download the source code and just open index.html in your browser!
+1. checkout the [Live Demo](https://rama4.github.io/Projects/Rubiks%20Cube%20Solver/cube.html) or
+2. download the source code and just open cube.html in your browser!

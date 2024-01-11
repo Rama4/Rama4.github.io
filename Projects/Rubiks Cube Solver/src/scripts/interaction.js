@@ -14,49 +14,6 @@
 
 */
 
-/*
-@ Rama Narasimhan:
-
-Note : the get_moves function will always return Uppercase string because:
-	lowercase string means more than 1 layer rotates at once.
-	this can only be done by buttons, not by single-touch gestures and keyboard. (i think)
-	
-	there is a mistake in E -> google cube labs' E = my E' and e = my e'
-	so i have to do the inverse step for e and E
-*/
-var isUpper = function(str)
-{
-	return  str == str.toUpperCase();
-};
-
-var get_moves = function(command,degrees)
-{
-	if(degrees == undefined)
-	{
-		if(command=='e')
-			return "E";
-		if(command=='E')
-			return "E'";
-		return isUpper(command) ? command : command.toUpperCase() + "'";
-	}
-	var s="",n=degrees/90;
-	if(!n)
-		return s;
-	if(command == 'E')
-	{
-		s += Math.abs(n) + command.toUpperCase();
-		if( ( ( isUpper(command) && degrees < 0) || (!isUpper(command) && degrees > 0 ) ) == false )
-			s+="'";
-		return s;
-	}
-		
-	s += Math.abs(n) + command.toUpperCase();
-	if( ( isUpper(command) && degrees < 0) || (!isUpper(command) && degrees > 0 ) )
-		s+="'";
-	return s;
-};	
-
-
 
 ERNO.Interaction = (function(){
 
@@ -391,11 +348,7 @@ ERNO.Interaction = (function(){
 				//	then it doesn't really count as a move, and we don't need to add it to the history		
 				var deg = targetAngle.radiansToDegrees();
 				cube.twist( new ERNO.Twist( command, deg ));
-				noturn=1;
-					RUBIK.parse(get_moves(command,deg));
-				noturn=0;
-
-
+				RUBIK.parseUserMoveData(command, deg);
 				// Delete the reference to our slice
 
 				
