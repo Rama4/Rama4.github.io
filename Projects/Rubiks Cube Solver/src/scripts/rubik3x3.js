@@ -1369,9 +1369,8 @@ class Rcube
     {     
 		console.log("breakit");
 		this.disp();
-		window.cube.setTwistDuration(100);
-        const moves = "Y' Y' Z' S' D' L' S' D' L' M' L' M' L' M' M' L' L' L' S' D' D' D' S' F' B' B' L' X' X' Y' Z' Z'";
-        // const moves = "M E S S E M L R U D B L U F D U U L F D B";
+        // const moves = "Y' Y' Z' S' D' L' S' D' L' M' L' M' L' M' M' L' L' L' S' D' D' D' S' F' B' B' L' X' X' Y' Z' Z'";
+        const moves = "M E S S E M L R U D B L U F D U U L F D B";
         // const moves = "L R U D B L U F D U U L F D B";
 		const movesArr = moves.split(' ');
 		// console.log(movesArr);

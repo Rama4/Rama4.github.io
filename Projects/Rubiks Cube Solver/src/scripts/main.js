@@ -75,7 +75,7 @@
 
 
 $(document).ready( function(){ 
-
+	// BEGIN CHROME CUBE LABS CODE
 
 	var useLockedControls = true,
 		controls = useLockedControls ? ERNO.Locked : ERNO.Freeform;
@@ -116,11 +116,14 @@ $(document).ready( function(){
 	// motion.range.z = 0;
 	// motion.paused = false;				// disables the effect
 
+	// END CHROME CUBE LABS CODE
+
+
+
 	RUBIK = new Rcube();
 	window.noturn = 0;
-	
 
-	var ind=0,k=0;
+	let ind=0,k=0;
 	// var RUBIK;	// declaring the variable here and initialising  in main.js, to not get 'RUBIK is not defined' in any file.
 	let move_description_index = 0;
 	
@@ -156,10 +159,10 @@ $(document).ready( function(){
 	});		
 
 	const show_solution_description = function() {
-		console.log("show_solution_description()");
+		// console.log("show_solution_description()");
 		let j = RUBIK.move_descriptions[k]?.findLastIndex((element) => element.index <= ind);
 		const jind = RUBIK.move_descriptions[k][j]?.index;
-		console.log("k=",k,"ind=",ind,"jind=",jind);
+		// console.log("k=",k,"ind=",ind,"jind=",jind);
 		let movMsgStr = "";
 		if(jind != undefined){
 			for(;j>=0 && RUBIK.move_descriptions[k][j]?.index === jind;j--){
@@ -187,11 +190,11 @@ $(document).ready( function(){
 
 
 		RUBIK.loadCubeStateFromString(RUBIK.states[0]);
-		var innerHTML  = "";
+		let innerHTML  = "";
 		for(let layer=0;layer<3;layer++)
 		{
 			innerHTML += '<h4><strong>layer '+(layer+1)+'</strong></h4>';
-			for(var i=0;i<RUBIK.solution_moves_list[layer].length;i++)
+			for(let i=0;i<RUBIK.solution_moves_list[layer].length;i++)
 			{
 				innerHTML += '<span id=\'move'+layer+i+'\'>'+RUBIK.solution_moves_list[layer][i]+'</span> ';
 			}
@@ -203,7 +206,7 @@ $(document).ready( function(){
 		innerHTML += "</div>";
 
 		
-		var ele=null;
+		let ele=null;
 		k=ind=0;
 		let solutionHTML = "<div class=\'row text-center\'>";
 		solutionHTML += `<h3 >Solving layer : <span id="solution-guide-layer">${k+1}</span></h3>`;
@@ -270,7 +273,7 @@ $(document).ready( function(){
 			show_solution_description();
 
 		});
-		var activeItem = null;
+		let activeItem = null;
 		$("#solution-box>span").hover(
 			function() // mouse enter
 			{

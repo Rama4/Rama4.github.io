@@ -145,7 +145,7 @@ ERNO.Cube = function( parameters ){
 
 	//  How long should a Cube.twist() take?
 
-	this.twistDuration = parameters.twistDuration !== undefined ? parameters.twistDuration :10;
+	this.twistDuration = parameters.twistDuration !== undefined ? parameters.twistDuration :300;
 
 
 	//  If we shuffle, how shall we do it?
