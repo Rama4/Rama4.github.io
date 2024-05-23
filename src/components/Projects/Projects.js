@@ -57,15 +57,15 @@ function Projects() {
   
   return (
     <Container fluid className="project-section">
-      <div id="project" className="projects-sections"></div>
+      {/* <div id="project" className="projects-sections"></div> */}
       <Particle />
       <Container>
         <h1 className="project-heading" >
-          My Recent Projects
+          Recent Projects
         </h1>
         {renderProjects()}
         <h1 className="project-heading" >
-          My Undergrad Projects
+          Past Projects
         </h1>
         {renderUndergradProjects()}
         

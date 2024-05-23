@@ -1,9 +1,9 @@
 {
   "profile": {
     "bio": [
-      "I'm a Master of Computer Science (MCS) student at Arizona State University.",
-      "I come with 4+ years of industry experience in Software Engineering working with companies like Amazon and Gen. During this time, I have had the opportunity to work on multiple projects spanning a wide range of domains like UX Automation library development, Windows and Linux client-side application development and mobile application development.",
-      "My key skills include C++, React-Native, Node.js and Python."
+      "I am a CS graduate from Arizona State University.",
+      "I have 4+ years of industry experience in Software Engineering working with companies like Amazon and Gen. During this time, I have had the opportunity to work on multiple projects spanning a wide range of domains like UX Automation library development, Windows and Linux client-side application development and mobile application development.",
+      "My key skills include C++, React, React-Native, Node.js and Python."
     ],
     "resume": "https://drive.google.com/file/d/1wPEmbTtOHMO-QdibYbjC-vko306o7srB/view?usp=drive_link",
     "social": {
@@ -13,6 +13,15 @@
     }
   },
   "undergradProjects": [
+    {
+      "name": "Musician event booking platform",
+      "description": "A website for county musicians to register and be requested to perform for events by organizers.",
+      "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
+      "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
+      "demoLink": "https://booking-benefit-live-client.onrender.com/",
+      "imgPath": "./Projects/benefit.jpg",
+      "isStatic": false
+    },
     {
       "name": "Rubik's Cube solver",
       "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
@@ -43,28 +52,28 @@
   ],
   "projects": [
     {
+      "name": "OpenRabbit",
+      "description": "An AI-powered conversational assistant that enables residents and visitors to access information about San Francisco's city services and resources efficiently and quickly.",
+      "stacks": "Tech Stack : React.js, Next.js, GPT 4o, Silero VAD, Whisper-Base, Deepgram Aura, Mailgun, Spotify API, Suno.ai, Clerk.dev ",
+      "ghLink": "https://github.com/selalipop/open-rabbit",
+      "demoLink": "https://www.openrabbit.dev/",
+      "imgPath": "./Projects/openRabbit.png",
+      "isStatic": false
+    },
+    {
+      "name": "CityHub",
+      "description": "An AI-powered conversational assistant that enables residents and visitors to access information about San Francisco's city services and resources efficiently and quickly.",
+      "stacks": "Tech Stack : React.js, FastAPI, Brave Search API, Ollama, LLAMA3, Groq",
+      "ghLink": "https://github.com/colinalexander/city-hub/",
+      "demoLink": "",
+      "imgPath": "./Projects/cityhub.jpg",
+      "isStatic": false
+    },
+    {
       "name": "Covid-19 Symptoms Logger",
       "description": "Mobile app for measuring Heart Rate and Respiratory Rate and Logging symptoms data.",
       "stacks": "Tech Stack : React Native, Redux, expo-camera, React Navigation, React Native Sensors",
       "ghLink": "https://github.com/Rama4/Covid-19-Symptoms-Logger",
-      "demoLink": "",
-      "imgPath": "",
-      "isStatic": false
-    },
-    {
-      "name": "Musi cian event booking platform",
-      "description": "A website for county musicians to register and be requested to perform for events by organizers.",
-      "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
-      "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
-      "demoLink": "https://booking-benefit-live-client.onrender.com/",
-      "imgPath": "./Projects/benefit.jpg",
-      "isStatic": false
-    },
-    {
-      "name": "Media slideshow",
-      "description": "A Full-Stack website where users can upload images, videos URLs, and configure the content and playlist to be displayed on different TVs in the Office.",
-      "stacks": "Tech Stack : Angular, Node.js, Express.js, MongoDB",
-      "ghLink": "https://github.com/Rama4/media_slideshow",
       "demoLink": "",
       "imgPath": "",
       "isStatic": false
