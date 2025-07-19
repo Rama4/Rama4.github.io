@@ -10,7 +10,7 @@ function Projects() {
     return (
       <>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-        {data.projects.map((p,i)=>{
+        {data?.projects?.map((p,i)=>{
           return (
             <Col md={4} className="project-card">
               <ProjectCard
@@ -30,45 +30,15 @@ function Projects() {
     );
   }
 
-  const renderUndergradProjects = () => {
-  
-    return (
-      <>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-        {data.undergradProjects.map((p,i)=>{
-          return (
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={p.imgPath}
-                isBlog={false}
-                title={p.name}
-                description={p.description}
-                stacks={p.stacks}
-                ghLink={p.ghLink}
-                demoLink={p.demoLink}
-                />
-            </Col>
-          );
-        })}
-        </Row>
-      </>
-    );
-  }
-  
   return (
     <Container fluid className="project-section">
       {/* <div id="project" className="projects-sections"></div> */}
       <Particle />
       <Container>
         <h1 className="project-heading" >
-          Recent Projects
+          Projects
         </h1>
         {renderProjects()}
-        <h1 className="project-heading" >
-          Past Projects
-        </h1>
-        {renderUndergradProjects()}
-        
       </Container>
     </Container>
   );

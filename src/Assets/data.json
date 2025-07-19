@@ -1,9 +1,8 @@
 {
   "profile": {
     "bio": [
-      "I am a CS graduate from Arizona State University.",
-      "I have 4+ years of industry experience in Software Engineering working with companies like Amazon and Gen. During this time, I have had the opportunity to work on multiple projects spanning a wide range of domains like UX Automation library development, Windows and Linux client-side application development and mobile application development.",
-      "My key skills include C++, React, React-Native, Node.js and Python."
+      "Software engineer with over 5 years of experience building frontend applications, including leading UI development for Amazon Kindle devices used by millions. I specialize in creating performant and responsive user interfaces that enhance user engagement",
+      "My key skills include React, Next.js, React-Native, Node.js, typescript, C++, and Python."
     ],
     "resume": "https://drive.google.com/file/d/1wPEmbTtOHMO-QdibYbjC-vko306o7srB/view?usp=drive_link",
     "social": {
@@ -12,45 +11,15 @@
       "email": "mailto:m.rama.narasimhan@gmail.com"
     }
   },
-  "undergradProjects": [
-    {
-      "name": "Musician event booking platform",
-      "description": "A website for county musicians to register and be requested to perform for events by organizers.",
-      "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
-      "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
-      "demoLink": "https://booking-benefit-live-client.onrender.com/",
-      "imgPath": "./Projects/benefit.jpg",
-      "isStatic": false
-    },
-    {
-      "name": "Rubik's Cube solver",
-      "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
-      "stacks": "Tech Stack : Chrome cube labs, Javascript, jQuery",
-      "ghLink": "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
-      "demoLink": "./Projects/Rubiks Cube Solver/cube.html",
-      "imgPath": "./Projects/rubik.gif",
-      "isStatic": true
-    },
-    {
-      "name": "Website for test-taking",
-      "description": "A Full-Stack website where teachers can upload questions, create and schedule online tests for students.",
-      "stacks": "Tech Stack : Javascript, jQuery, Node.js, Express.js, MongoDB",
-      "ghLink": "https://github.com/Rama4/pragna",
-      "demoLink": "",
-      "imgPath": "./Projects/pragna.jpg",
-      "isStatic": false
-    },
-    {
-      "name": "Memory game",
-      "description": "A Game that i developed in the given time of 24hrs, as part of Daksh Web-Design contest by SASTRA University on Feb 2017 (Won 3rd place overall across all colleges in Tamil Nadu state).",
-      "stacks": "Tech Stack : Javascript, jQuery",
-      "ghLink": "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Koolman%20Memory%20Game",
-      "demoLink": "./Projects/Koolman Memory Game/views/koolman.html",
-      "imgPath": "./Projects/koolman.gif",
-      "isStatic": true
-    }
-  ],
   "projects": [
+    {
+      "name": "Hexus Embed SDK",
+      "description": "An embed SDK for Hexus, that integrates interactive product demos into client websites.",
+      "stacks": "Tech Stack : React.js, Next.js, typescript",
+      "demoLink": "https://help.calendly.com/hc/en-us/p/video-tutorials",
+      "imgPath": "./Projects/hexus_sdk.png",
+      "isStatic": false
+    },
     {
       "name": "OpenRabbit",
       "description": "An AI-powered conversational assistant that enables residents and visitors to access information about San Francisco's city services and resources efficiently and quickly.",
@@ -70,13 +39,22 @@
       "isStatic": false
     },
     {
-      "name": "Covid-19 Symptoms Logger",
-      "description": "Mobile app for measuring Heart Rate and Respiratory Rate and Logging symptoms data.",
-      "stacks": "Tech Stack : React Native, Redux, expo-camera, React Navigation, React Native Sensors",
-      "ghLink": "https://github.com/Rama4/Covid-19-Symptoms-Logger",
-      "demoLink": "",
-      "imgPath": "",
+      "name": "Musician event booking platform",
+      "description": "A website for county musicians to register and be requested to perform for events by organizers.",
+      "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
+      "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
+      "demoLink": "https://booking-benefit-live-client.onrender.com/",
+      "imgPath": "./Projects/benefit.jpg",
       "isStatic": false
+    },
+    {
+      "name": "Rubik's Cube solver",
+      "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
+      "stacks": "Tech Stack : Chrome cube labs, Javascript, jQuery",
+      "ghLink": "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
+      "demoLink": "./Projects/Rubiks Cube Solver/cube.html",
+      "imgPath": "./Projects/rubik.gif",
+      "isStatic": true
     }
   ]
 }
