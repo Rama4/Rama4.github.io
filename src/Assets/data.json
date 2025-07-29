@@ -1,7 +1,7 @@
 {
   "profile": {
     "bio": [
-      "Software engineer with over 5 years of experience building frontend applications, including leading UI development for Amazon Kindle devices used by millions. I specialize in creating performant and responsive user interfaces that enhance user engagement",
+      "Software engineer with over 5 years of experience building frontend applications, including leading UI development for Amazon Kindle devices. I specialize in creating performant and responsive user interfaces that enhance user engagement",
       "My key skills include React, Next.js, React-Native, Node.js, typescript, C++, and Python."
     ],
     "resume": "https://drive.google.com/file/d/1wPEmbTtOHMO-QdibYbjC-vko306o7srB/view?usp=drive_link",
@@ -43,7 +43,7 @@
       "description": "A website for county musicians to register and be requested to perform for events by organizers.",
       "stacks": "Tech Stack : React.js, Redux, Styled-Components, react-router-dom",
       "ghLink": "https://github.com/Rama4/React-Landing-Page-Template/tree/wireframe",
-      "demoLink": "https://booking-benefit-live-client.onrender.com/",
+      "demoLink": "https://booking-benefit-live-client.onrender.com/A2",
       "imgPath": "./Projects/benefit.jpg",
       "isStatic": false
     },
