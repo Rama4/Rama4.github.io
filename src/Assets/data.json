@@ -51,7 +51,7 @@
       "name": "Rubik's Cube solver",
       "description": "An interactive website where users can play with the rubik's cube and learn to solve it.",
       "stacks": "Tech Stack : Chrome cube labs, Javascript, jQuery",
-      "ghLink": "https://github.com/Rama4/Rama4.github.io/tree/master/Projects/Rubiks%20Cube%20Solver",
+      "ghLink": "https://github.com/Rama4/Rama4.github.io/tree/master/public/Projects/Rubiks%20Cube%20Solver",
       "demoLink": "./Projects/Rubiks Cube Solver/cube.html",
       "imgPath": "./Projects/rubik.gif",
       "isStatic": true
