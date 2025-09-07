@@ -1,0 +1,10 @@
+src/cubes.js:
+    contains the cuber main config code, including keyPress events
+    change cube animation duration : cubes.js -> twistDuration
+
+src/locked.js:
+    contains user static cuber events like rotate cube on the X,Y,Z axes.
+    Different twist handler gets invoked depending on the user's interaction being a tap or drag action.
+
+src/interaction.js:
+    contains user interaction events like twisting a slice, etc.
