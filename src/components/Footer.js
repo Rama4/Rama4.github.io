@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import {
   AiFillGithub,
 } from "react-icons/ai";
@@ -10,11 +10,7 @@ import data from '../Assets/data.json';
 function Footer() {
   return (
     <Container fluid className="footer">
-      <Row>
-        <Col md="4" className="footer-copywright">
-          <h3>Credit to Aakarsh Devadiga for the template</h3>
-        </Col>
-        <Col md="4" className="footer-body">
+        <Col className="footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a
@@ -48,7 +44,6 @@ function Footer() {
             </li>
           </ul>
         </Col>
-      </Row>
     </Container>
   );
 }
